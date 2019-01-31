@@ -11,6 +11,7 @@ import "./style.scss";
   Put the JavaScript code you want below.
 */
 
+<<<<<<< HEAD
 // Get the modal
 var modal = document.getElementById('myModal');
 
@@ -36,3 +37,6 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
+=======
+console.log("coucou");
+>>>>>>> 5f3464d3fcdc494beeefcadaba1d36420dc9c555
