@@ -1,4 +1,3 @@
-
 // import some polyfill to ensure everything works OK
 import "babel-polyfill"
 
