@@ -36,6 +36,5 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
-=======
 console.log("coucou");
->>>>>>> 5f3464d3fcdc494beeefcadaba1d36420dc9c555
+
