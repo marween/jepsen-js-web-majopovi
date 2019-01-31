@@ -25,12 +25,20 @@
       </header>
       <div class="content">
         <p>
-          <i class="fas fa-arrow-right"></i> Insert content here. <i class="fas fa-arrow-left"></i>
+          <i class="fas fa-arrow-right"></i>
+          <textarea id="sourceTA" rows="10" cols="82"></textarea>
+          <hr/>
+          <button id="runBtn">Convert</button>
+          <hr/>
+          <div id="targetDiv"></div>
+
+<script src="https://cdn.rawgit.com/showdownjs/showdown/1.0.1/dist/showdown.min.js"></script>
+          <i class="fas fa-arrow-left"></i>
         </p>
       </div>
     </div>
 
     <script src="./script.js"></script>
+    <script src="./node_modules/showdown/dist/showdown.min.js"></script>
   </body>
 </html>
-
