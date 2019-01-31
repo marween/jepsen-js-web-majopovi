@@ -11,7 +11,6 @@ import "./style.scss";
   Put the JavaScript code you want below.
 */
 
-<<<<<<< HEAD
 // Get the modal
 var modal = document.getElementById('myModal');
 
