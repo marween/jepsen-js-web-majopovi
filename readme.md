@@ -1,6 +1,7 @@
 
 # Becode Template for JavaScript Exercises
 
+<<<<<<< HEAD
 Hello ! This is a simple template to use in Becode's JavaScript exercises.
 
 Test
@@ -65,3 +66,7 @@ This template already integrate some libraries and tools:
 
 * [Bootstrap](https://getbootstrap.com/): A CSS framework containing a lot of useful components, both in CSS and JavaScript. This template uses the [Litera](https://bootswatch.com/litera/) Bootstrap template.
 * [Font Awesome](https://fontawesome.com/): A library of icons that we can use to display nice little icons everywhere. There are even cats in it :smiley_cat: !
+=======
+Test super vialin are you there???
+Wouhou!
+>>>>>>> vincent-chilot
