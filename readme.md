@@ -3,6 +3,8 @@
 
 Hello ! This is a simple template to use in Becode's JavaScript exercises.
 
+Test
+
 ## Starting a new project from this template
 
 ```bash
