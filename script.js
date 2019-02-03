@@ -47,9 +47,11 @@ function updateOutput() {
 	//J'ajoute le dernier commentaire et je vide la zone de texte
 	data.push(input_textarea.value);
 	input_textarea.value="";
+	//je string mon tableau clef: content value: data
 	localStorage.setItem('content', JSON.stringify(data));
 
 	let toDisplay = "";
+	//je parcours mon tableau 
 	for(let i=0; i<data.length; i++ ){
 		
 
@@ -59,5 +61,5 @@ function updateOutput() {
 	output_div.innerHTML = toDisplay;
 	
 }
-
+// je lance la fonction au click
 save_button.addEventListener('click', updateOutput);
