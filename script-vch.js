@@ -38,10 +38,18 @@ function prepareButton() {
     //button to add an item
     document.getElementById("btnAdd").onclick = function() {
       modal.style.display = "block";
-      document.getElementById("modTitle").innerHTML = "Name of the idea : <input type=\"text\" name=\"idea\">";
-      document.getElementById("modDescr").innerHTML = "Description: <input type=\"text\" name=\"description\">";
-      document.getElementById("modCom").innerHTML = "Commentary <input type=\"text\" name=\"description\">";
-      document.getElementById("addButtons").innerHTML = "<input type=\"button\" id=\"btnSave\" value=\"Save\">";
+      document.getElementById("modTitle").innerHTML = "Name of the idea : <input type=\"text\" id=\"ideaNew\">";
+      document.getElementById("modDescr").innerHTML = "Description: <input type=\"text\" id==\"descriptionNew\">";
+      document.getElementById("modCom").innerHTML = "Commentary <input type=\"text\" id==\"commentaryNew\">";
+      document.getElementById("addButtons").innerHTML = "<input type=\"button\" id=\"btnSaveNew\" value=\"Save\">";
+        document.getElementById("btnSaveNew").onclick = function() {
+        dataJson[dataJson.length+1].idea.push(document.getElementById("ideaNew").value);
+        dataJson[dataJson.length+1].description.push(document.getElementById("descriptionNew").value);
+        dataJson[dataJson.length+1].commentary.push(document.getElementById("commentaryNew").value);
+        modal.style.display = "none"; //remove modal box
+        addIdeas (); //make a new list without the new element
+        prepareButton(); //listeners on new elements
+        };
       };
 };
 
