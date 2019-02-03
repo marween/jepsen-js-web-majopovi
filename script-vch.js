@@ -42,7 +42,7 @@ function prepareButton() {
       document.getElementById("modDescr").innerHTML = "Description: <input type=\"text\" name=\"description\">";
       document.getElementById("modCom").innerHTML = "Commentary <input type=\"text\" name=\"description\">";
       document.getElementById("addButtons").innerHTML = "<input type=\"button\" id=\"btnSave\" value=\"Save\">";
-    };
+      };
 };
 
 //change the default content of the modal box with the one in the
@@ -55,15 +55,22 @@ function displayModalBox (idTarget) {
   document.getElementById("modDescr").innerHTML = dataJson[index].description;
   document.getElementById("modCom").innerHTML = dataJson[index].commentary;
   document.getElementById("addButtons").innerHTML =  "<span><input type=\"button\" id=\"btnEdit\" value=\"Edit\"><input type=\"button\" id=\"btnRemove\" value=\"Remove\"></span>";
+  //edit +save (in 2 steps)
   document.getElementById("btnEdit").onclick = function() {
-    console.log("edit");
-    document.getElementById("modTitle").innerHTML = "Name of the idea : <input type=\"text\" name=\"idea\" value=\"" + dataJson[index].idea + "\">";
-    document.getElementById("modDescr").innerHTML = "Description: <input type=\"text\" name=\"description\" value=\"" + dataJson[index].description + "\">";
-    document.getElementById("modCom").innerHTML = "Commentary <input type=\"text\" name=\"description\" value=\"" + dataJson[index].commentary + "\">";
-    document.getElementById("addButtons").innerHTML =  "<span><input type=\"button\" id=\"btnEdit\" value=\"Save\"></span><span> / Close box to aboard</span>";
+    document.getElementById("modTitle").innerHTML = "Name of the idea : <input type=\"text\" id=\"idea\" value=\"" + dataJson[index].idea + "\">";
+    document.getElementById("modDescr").innerHTML = "Description: <input type=\"text\" id=\"description\" value=\"" + dataJson[index].description + "\">";
+    document.getElementById("modCom").innerHTML = "Commentary <input type=\"text\" id=\"commentary\" value=\"" + dataJson[index].commentary + "\">";
+    document.getElementById("addButtons").innerHTML =  "<span><input type=\"button\" id=\"btnSave\" value=\"Save\"></span><span> / Close box to aboard</span>";
+    document.getElementById("btnSave").onclick = function() {
+      dataJson[index].idea = document.getElementById("idea").value;
+      dataJson[index].description = document.getElementById("description").value;
+      dataJson[index].commentary = document.getElementById("commentary").value;
+      modal.style.display = "none"; //remove modal box
+      document.getElementById(idTarget).innerHTML = document.getElementById("idea").value;
+    }
   };
+  //remove
   document.getElementById("btnRemove").onclick = function() {
-      console.log(dataJson);
       //dataJson.splice(index, index);//delete index element
       delete dataJson[index];
       /*while( listIdeas.firstChild) {
