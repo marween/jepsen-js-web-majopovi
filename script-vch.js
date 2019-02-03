@@ -9,8 +9,42 @@ import 'bootstrap';
 import "./style.scss";
 
 // import the json
-import dataJson from "./data.json";
+/*import dataJson from "./data.json";*/
 
+/*let dataJson = [
+  {
+    "idea": "Idea 1",
+    "description": "Idea 1 description",
+    "commentary": "Idea 1 commentary"
+  },
+  {
+    "idea": "Idea 2",
+    "description": "Idea 2 description",
+    "commentary": "Idea 2 commentary"
+  },
+  {
+    "idea": "Idea 3",
+    "description": "Idea 3 description",
+    "commentary": "Idea 3 commentary"
+  }
+]*/
+let dataJson = JSON.parse(localStorage.getItem('dataJson'));
+if (dataJson==null){
+  dataJson = [
+    {
+      "idea": "Test: Idea 1",
+      "description": "Idea 1 description",
+      "commentary": "Idea 1 commentary"
+    },
+    {
+      "idea": "Test: Idea 2",
+      "description": "Idea 2 description",
+      "commentary": "Idea 2 commentary"
+    }
+  ]
+
+}
+console.log(dataJson);
 //adding 'ideas' on the landing page from json
 function addIdeas () {
   let str = "<ul id='listIdeas'>";
@@ -53,6 +87,10 @@ function prepareButton() {
         prepareButton(); //listeners on new elements
         };
       };
+      //button to save json
+      document.getElementById("saveAll").onclick = function() {
+      localStorage.setItem('dataJson', JSON.stringify(dataJson));
+      }
 };
 
 //change the default content of the modal box with the one in the
