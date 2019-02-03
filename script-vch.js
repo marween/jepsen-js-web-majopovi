@@ -8,26 +8,7 @@ import 'bootstrap';
 // import the style
 import "./style.scss";
 
-// import the json
-/*import dataJson from "./data.json";*/
-
-/*let dataJson = [
-  {
-    "idea": "Idea 1",
-    "description": "Idea 1 description",
-    "commentary": "Idea 1 commentary"
-  },
-  {
-    "idea": "Idea 2",
-    "description": "Idea 2 description",
-    "commentary": "Idea 2 commentary"
-  },
-  {
-    "idea": "Idea 3",
-    "description": "Idea 3 description",
-    "commentary": "Idea 3 commentary"
-  }
-]*/
+//check if there is something storage otherwise create an object as exemple
 let dataJson = JSON.parse(localStorage.getItem('dataJson'));
 if (dataJson==null){
   dataJson = [
@@ -44,7 +25,7 @@ if (dataJson==null){
   ]
 
 }
-console.log(dataJson);
+
 //adding 'ideas' on the landing page from json
 function addIdeas () {
   let str = "<ul id='listIdeas'>";
