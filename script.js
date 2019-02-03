@@ -13,34 +13,17 @@ import "./style.scss";
 
 console.log("coucou");
 
-//
-// function run() {
-//   var text = document.getElementById('sourceTA').value,
-//       target = document.getElementById('targetDiv'),
-//       converter = new showdown.Converter(),
-//       html = converter.makeHtml(text);
-//
-//     target.innerHTML = html;
-// }
 
-document.getElementById(runBtn).addEventListener("click", () => {
-  function run() {
-    var text = document.getElementById('sourceTA').value,
-        target = document.getElementById('targetDiv'),
-        converter = new showdown.Converter(),
-        html = converter.makeHtml(text);
+// If you use require (Node etc), require as first the module and then create the instance
+let Remarkable = require('remarkable');
+// If you're in the browser, the Remarkable class is already available in the window
+let md = new Remarkable();
 
-      target.innerHTML = html;
-  }
+document.querySelector("#butSend").addEventListener("click", () => {
+  let text = (document.getElementById("text").value);
+  let butReturn = `<button class="butReturn" id="butReturn" onClick="window.location.reload()">Try again</button>`;
+  let f = document.querySelector(".form");
+  f.parentNode.removeChild(f);
+  document.getElementById("textResult").innerHTML = md.render(text);
+  console.log(md.render(text))
 })
-
-
-
-
-// document.querySelector("#butdiv").addEventListener("click", () => {
-//   var x = parseInt(document.getElementById("num1").value);
-//   var y = parseInt(document.getElementById("num2").value);
-//   var result = x / y;
-//   console.log("Résultat est " + result);
-//   document.getElementById("result").innerHTML = result;
-// });

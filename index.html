@@ -20,25 +20,25 @@
       <header>
         <h1>BeCode / JavaScript for the Web</h1>
         <h2>
-          <strong><i class="fas fa-arrow-right"></i> Insert exercise name here <i class="fas fa-arrow-left"></i></strong>
+          <strong><i class="fas fa-arrow-right"></i> Group exercise Javascript for the Web <i class="fas fa-arrow-left"></i></strong>
         </h2>
       </header>
       <div class="content">
         <p>
           <i class="fas fa-arrow-right"></i>
-          <textarea id="sourceTA" rows="10" cols="82"></textarea>
-          <hr/>
-          <button id="runBtn">Convert</button>
-          <hr/>
-          <div id="targetDiv"></div>
-
-<script src="https://cdn.rawgit.com/showdownjs/showdown/1.0.1/dist/showdown.min.js"></script>
+          <form class="form">
+              <textarea id="text" name="text" tabindex="1" placeholder="Write in Markdown" rows="5" cols="33"></textarea>
+              <button class="butSend" id="butSend">Convert</button>
+              <button class="butReset" type="reset">Reset</button>
+            </form>
+            <div class="result">
+              <div id="textResult"></div>
+            </div>
           <i class="fas fa-arrow-left"></i>
         </p>
       </div>
     </div>
 
     <script src="./script.js"></script>
-    <script src="./node_modules/showdown/dist/showdown.min.js"></script>
   </body>
 </html>

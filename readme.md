@@ -8,4 +8,4 @@ We need to conquer the world. Let's propose all your ideas [here](https://scalaj
 
 It's just a group exercice for getting better at working together with Git. It's writtent in JS and HTML/CSS.
 
-Done at [BeCode](http://www.becode.org) 
+Done at [BeCode](http://www.becode.org)
