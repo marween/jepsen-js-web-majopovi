@@ -50,6 +50,7 @@ function prepareButton() {
 function displayModalBox (idTarget) {
   let index = parseInt(idTarget.substr(4));
   modal.style.display = "block";
+  //display values in modal box
   document.getElementById("modTitle").innerHTML = dataJson[index].idea;
   document.getElementById("modDescr").innerHTML = dataJson[index].description;
   document.getElementById("modCom").innerHTML = dataJson[index].commentary;
@@ -59,13 +60,15 @@ function displayModalBox (idTarget) {
   };
   document.getElementById("btnRemove").onclick = function() {
       console.log(dataJson);
+      //dataJson.splice(index, index);//delete index element
       delete dataJson[index];
-      while( listIdeas.firstChild) {
+      /*while( listIdeas.firstChild) {
           listIdeas.removeChild( listIdeas.firstChild);
-      }
-      modal.style.display = "none";
-      addIdeas ();
-      console.log(dataJson);
+      }*/
+      modal.style.display = "none"; //remove modal box
+      addIdeas (); //make a new list without the element
+      prepareButton(); //listeners on new elements
+      console.log(index);
   };
 };
 
