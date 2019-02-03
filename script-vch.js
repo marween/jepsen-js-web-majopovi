@@ -40,7 +40,7 @@ function prepareButton() {
       modal.style.display = "block";
       document.getElementById("modTitle").innerHTML = "Name of the idea : <input type=\"text\" name=\"idea\">";
       document.getElementById("modDescr").innerHTML = "Description: <input type=\"text\" name=\"description\">";
-      document.getElementById("modCom").innerHTML = "";
+      document.getElementById("modCom").innerHTML = "Commentary <input type=\"text\" name=\"description\">";
       document.getElementById("addButtons").innerHTML = "<input type=\"button\" id=\"btnSave\" value=\"Save\">";
     };
 };
@@ -57,6 +57,10 @@ function displayModalBox (idTarget) {
   document.getElementById("addButtons").innerHTML =  "<span><input type=\"button\" id=\"btnEdit\" value=\"Edit\"><input type=\"button\" id=\"btnRemove\" value=\"Remove\"></span>";
   document.getElementById("btnEdit").onclick = function() {
     console.log("edit");
+    document.getElementById("modTitle").innerHTML = "Name of the idea : <input type=\"text\" name=\"idea\" value=\"" + dataJson[index].idea + "\">";
+    document.getElementById("modDescr").innerHTML = "Description: <input type=\"text\" name=\"description\" value=\"" + dataJson[index].description + "\">";
+    document.getElementById("modCom").innerHTML = "Commentary <input type=\"text\" name=\"description\" value=\"" + dataJson[index].commentary + "\">";
+    document.getElementById("addButtons").innerHTML =  "<span><input type=\"button\" id=\"btnEdit\" value=\"Save\"></span><span> / Close box to aboard</span>";
   };
   document.getElementById("btnRemove").onclick = function() {
       console.log(dataJson);
@@ -68,7 +72,7 @@ function displayModalBox (idTarget) {
       modal.style.display = "none"; //remove modal box
       addIdeas (); //make a new list without the element
       prepareButton(); //listeners on new elements
-      console.log(index);
+      //console.log(index);
   };
 };
 
