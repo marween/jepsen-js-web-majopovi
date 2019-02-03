@@ -53,7 +53,14 @@ function displayModalBox (idTarget) {
   document.getElementById("modTitle").innerHTML = dataJson[index].idea;
   document.getElementById("modDescr").innerHTML = dataJson[index].description;
   document.getElementById("modCom").innerHTML = dataJson[index].commentary;
-  document.getElementById("addButtons").innerHTML =  "<span><input type=\"button\" id=\"btnEdit\" value=\"Edit\"><input type=\"button\" id=\"btnCom\" value=\"Add commentary\"><input type=\"button\" id=\"btnRemove\" value=\"Remove\"></span>";
+  document.getElementById("addButtons").innerHTML =  "<span><input type=\"button\" id=\"btnEdit\" value=\"Edit\"><input type=\"button\" id=\"btnRemove\" value=\"Remove\"></span>";
+  document.getElementById("btnEdit").onclick = function() {
+    console.log("edit");
+  };
+  document.getElementById("btnRemove").onclick = function() {
+    console.log("remove");
+
+  };
 };
 
 
