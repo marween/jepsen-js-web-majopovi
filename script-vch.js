@@ -58,8 +58,14 @@ function displayModalBox (idTarget) {
     console.log("edit");
   };
   document.getElementById("btnRemove").onclick = function() {
-    console.log("remove");
-
+      console.log(dataJson);
+      delete dataJson[index];
+      while( listIdeas.firstChild) {
+          listIdeas.removeChild( listIdeas.firstChild);
+      }
+      modal.style.display = "none";
+      addIdeas ();
+      console.log(dataJson);
   };
 };
 
