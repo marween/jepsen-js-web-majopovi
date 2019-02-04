@@ -9,6 +9,7 @@
 */
 
 body {font-family: Arial, Helvetica, sans-serif;}
+
 /* The Modal (background) */
 .modal {
   display: none; /* Hidden by default */
@@ -67,14 +68,25 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
 .modal-header {
   padding: 2px 16px;
+  align-content: left;
+  //padding: 2px 16px;
   background-color: #5cb85c;
   color: white;
 }
 
 .modal-body {padding: 2px 16px;}
 
+
 .modal-footer {
   padding: 2px 16px;
   background-color: #5cb85c;
   color: white;
+}
+#sourceTA {
+    display: block;
+}
+#targetDiv {
+  border: 1px dashed #333333;
+  width: 600px;
+  height: 400px;
 }
