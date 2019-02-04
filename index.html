@@ -18,40 +18,48 @@
   <body>
     <div class="container">
       <header>
-        <h1>The Mad Jobless Powerfull Villains</h1>
+        <h1>Majopovi</h1>
         <h2>
-          <strong><i class="fas fa-arrow-right"></i> Team of greats villains <i class="fas fa-arrow-left"></i></strong>
+          <strong><i class="fas fa-arrow-right"></i> Majopovi <i class="fas fa-arrow-left"></i></strong>
         </h2>
       </header>
       <div class="content">
-        <img src="img/logo.png">
-        <p>
-          <i class="fas fa-arrow-right"></i>
-            <!--Main content: list of items-->
-            <div id="contentIdeas"></div>
-            <!--Modal box for existing items-->
-            <div id="myModal" class="modal">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <span class="close">&times;</span>
-                </div>
-                <div class="modal-body">
-                  <h1 id="modTitle">Titre de mon idée</h1>
-                  <p id="modDescr">texte de mon idée</p>
-                  <h2>comments</h2>
-                  <p id="modCom" class="content-output"></p>
-                  <textarea class='content-input'></textarea>
-                  <button class='save-button'>Save comment</button>
-                </div>
-                <!--add buttons in the modal box-->
-                <span id="addButtons"></span>
+        <article class="ideas-list">
+          <!--insert list of ideas here-->
+          <button id="modal-add-btn">Add Modal</button>
+          <button id="modal-edit-btn">Edit Modal</button>
+        </article>
+        <!--Modal for adding ideas-->
+          <div id="modal-add" class="modal">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1>Add an idea</h1>
+                <span id="close" class="modal-add-close">&times;</span>
               </div>
+              <input id="modal-title" value="Title"></input>
+              <textarea id="modal-descr" cols="30" rows="10"></textarea>
+              <button class="add-idea">Add your idea</button>
             </div>
-            <!--Button to add an item-->
-            <button type="button" class="btnAdd" id="btnAdd">Add an idea</button>
-            <button type="button" class="saveAll" id="saveAll">Save all</button>
-          <i class="fas fa-arrow-left"></i>
-        </p>
+          </div>
+        <!--Modal for editing ideas-->
+        <div id="modal-edit" class="modal">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1>Edit an idea</h1>
+              <span id="close" class="modal-edit-close">&times;</span>
+            </div>
+            <h1 class="idea-title">Idea Title</h1>
+            <p class="idea-descr">Idea Description</p>
+            <input id="modal-title" value="content of title"></input>
+            <textarea id="modal-descr" cols="30" rows="10"></textarea>
+            <h2>Comments:</h2>
+            <p class="modal-com">(to erase)List of comments</p>
+            <h2>Add a comment:</h2>
+            <textarea class="modal-comment" value="Comment"></textarea>
+            <button class="add-comment">Add comment</button>
+            <button class="save-idea">Save</button>
+          </div>
+        </div>
       </div>
     </div>
 
