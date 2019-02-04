@@ -1,4 +1,4 @@
-![Logo](https://via.placeholder.com/150)
+<img src="./img/logoMajopovi.png" width="150" alt="logo Majopovi">
 
 # The Mad Jobless Powerfull Villain
 
