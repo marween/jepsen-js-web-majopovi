@@ -51,7 +51,7 @@ let listToButons =  () => {
 }
 listToButons ();
 
-//put an action on teh item clicked
+//put an action on the item clicked
 function listToButonsAction (indexClicked)
 {
     indexClicked = indexClicked;
