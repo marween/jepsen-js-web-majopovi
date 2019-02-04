@@ -60,6 +60,7 @@ function updateOutput() {
 	}
 	output_div.innerHTML = toDisplay;
 
+
 }
 // je lance la fonction au click
 save_button.addEventListener('click', updateOutput);
