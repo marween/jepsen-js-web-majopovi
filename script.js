@@ -1,4 +1,3 @@
-
 // import some polyfill to ensure everything works OK
 import "babel-polyfill"
 
@@ -8,28 +7,49 @@ import 'bootstrap';
 // import the style
 import "./style.scss";
 
+/*Modal Box*/
+// Get the modal
+let modal = document.getElementById('myModal');
+// Get the <span> element that closes the modal
+let span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+	modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+	if (event.target == modal) {
+		modal.style.display = "none";
+	}
+}
+
+/* / Modal box */
+
 //check if there is something storage otherwise create an object as exemple
-let dataJson = JSON.parse(localStorage.getItem('dataJson'));
-if (dataJson==null){
-  dataJson = [
+//let dataJson = JSON.parse(localStorage.getItem('dataJson'));
+/*if (dataJson === ""){*/
+let dataJson = [
     {
       "idea": "Test: Idea 1",
       "description": "Idea 1 description",
-      "commentary": "Idea 1 commentary"
+      //"commentary": "Idea 1 commentary"
     },
     {
       "idea": "Test: Idea 2",
       "description": "Idea 2 description",
-      "commentary": "Idea 2 commentary"
+      //"commentary": "Idea 2 commentary"
     }
-  ]
-
-}
+  ];
+//}
 
 //adding 'ideas' on the landing page from json
 function addIdeas () {
+2
   let str = "<ul id='listIdeas'>";
   for (let i in dataJson){
+    console.log("test objet:" + dataJson[i]);
     let idNumber = "idea"+i;
     str += "<li id='" + idNumber + "'>" + dataJson[i].idea + "</li>";
   };
@@ -42,7 +62,7 @@ function addIdeas () {
 //THEN create a button for each element/idea in the list
 function prepareButton() {
   if (listIdeas.hasChildNodes()) {
-    let children = listIdeas.childNodes;
+    let children = listIdeas.childNodes;2
       for (let i = 0; i < children.length; i++) {
         let temp = children[i].id;
         document.getElementById(temp).onclick = function() {
@@ -55,14 +75,14 @@ function prepareButton() {
       modal.style.display = "block";
       document.getElementById("modTitle").innerHTML = "Name of the idea : <input type=\"text\" id=\"ideaNew\">";
       document.getElementById("modDescr").innerHTML = "Description: <input type=\"text\" id=\"descriptionNew\">";
-      document.getElementById("modCom").innerHTML = "Commentary <input type=\"text\" id=\"commentaryNew\">";
+      //document.getElementById("modCom").innerHTML = "Commentary <input type=\"text\" id=\"commentaryNew\">";
       document.getElementById("addButtons").innerHTML = "<input type=\"button\" id=\"btnSaveNew\" value=\"Save\">";
         document.getElementById("btnSaveNew").onclick = function() {
         let newIdea = document.getElementById("ideaNew").value;
         let newDes = document.getElementById("descriptionNew").value;
-        let newCom = document.getElementById("commentaryNew").value;
+        //let newCom = document.getElementById("commentaryNew").value;
         console.log(newIdea);
-        dataJson.push({idea: [newIdea],description: [newDes],commentary: [newCom]});
+        //dataJson.push({idea: [newIdea],description: [newDes],commentary: [newCom]});
         modal.style.display = "none"; //remove modal box
         addIdeas (); //make a new list without the new element
         prepareButton(); //listeners on new elements
@@ -82,18 +102,18 @@ function displayModalBox (idTarget) {
   //display values in modal box
   document.getElementById("modTitle").innerHTML = dataJson[index].idea;
   document.getElementById("modDescr").innerHTML = dataJson[index].description;
-  document.getElementById("modCom").innerHTML = dataJson[index].commentary;
+//  document.getElementById("modCom").innerHTML = dataJson[index].commentary;
   document.getElementById("addButtons").innerHTML =  "<span><input type=\"button\" id=\"btnEdit\" value=\"Edit\"><input type=\"button\" id=\"btnRemove\" value=\"Remove\"></span>";
   //edit +save (in 2 steps)
   document.getElementById("btnEdit").onclick = function() {
     document.getElementById("modTitle").innerHTML = "Name of the idea : <input type=\"text\" id=\"idea\" value=\"" + dataJson[index].idea + "\">";
     document.getElementById("modDescr").innerHTML = "Description: <input type=\"text\" id=\"description\" value=\"" + dataJson[index].description + "\">";
-    document.getElementById("modCom").innerHTML = "Commentary <input type=\"text\" id=\"commentary\" value=\"" + dataJson[index].commentary + "\">";
+    //document.getElementById("modCom").innerHTML = "Commentary <input type=\"text\" id=\"commentary\" value=\"" + dataJson[index].commentary + "\">";
     document.getElementById("addButtons").innerHTML =  "<span><input type=\"button\" id=\"btnSave\" value=\"Save\"></span><span> / Close box to aboard</span>";
     document.getElementById("btnSave").onclick = function() {
       dataJson[index].idea = document.getElementById("idea").value;
       dataJson[index].description = document.getElementById("description").value;
-      dataJson[index].commentary = document.getElementById("commentary").value;
+      //dataJson[index].commentary = document.getElementById("commentary").value;
       modal.style.display = "none"; //remove modal box
       document.getElementById(idTarget).innerHTML = document.getElementById("idea").value;
     }
@@ -112,33 +132,51 @@ function displayModalBox (idTarget) {
   };
 };
 
-
-// Get the modal
-let modal = document.getElementById('myModal');
-// Get the button that opens the modal
-let btn = document.getElementById("myBtn");
-// Get the <span> element that closes the modal
-let span = document.getElementsByClassName("close")[0];
-
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
-};
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  };
-};
 //launch functions
 addIdeas ();
 prepareButton ();
 
-//for later
-/*
-while( listIdeasfirstChild) {
-    listIdeasremoveChild( listIdeas.firstChild);
+////////////////////////Magali/////////////////////////////
+let input_textarea = document.querySelector('.content-input');
+let output_div = document.querySelector('.content-output');
+let save_button = document.querySelector('.save-button');
+let data = [];
+
+function updateOutput() {
+	//J'ajoute le dernier commentaire et je vide la zone de texte
+	data.push(input_textarea.value);
+	input_textarea.value="";
+	//je string mon tableau clef: content value: data
+	localStorage.setItem('content', JSON.stringify(data));
+
+	let toDisplay = "";
+	//je parcours mon tableau
+	for(let i=0; i<data.length; i++ ){
+
+
+		toDisplay += "<p>" + data[i] + "</p>";
+
+	}
+	output_div.innerHTML = toDisplay;
+  console.log(data);
+
 }
+// je lance la fonction au click
+save_button.addEventListener('click', updateOutput);
+
+// ---------------------------------- Jeremy mardown --------------------------//
+/*
+// If you use require (Node etc), require as first the module and then create the instance
+let Remarkable = require('remarkable');
+// If you're in the browser, the Remarkable class is already available in the window
+let md = new Remarkable();
+
+document.querySelector("#butSend").addEventListener("click", () => {
+  let text = (document.getElementById("text").value);
+  let butReturn = `<button class="butReturn" id="butReturn" onClick="window.location.reload()">Try again</button>`;
+  let f = document.querySelector(".form");
+  f.parentNode.removeChild(f);
+  document.getElementById("textResult").innerHTML = md.render(text);
+  console.log(md.render(text))
+})
 */
