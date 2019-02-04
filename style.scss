@@ -8,6 +8,7 @@
   If you need some CSS for any reason you can put it here.
 */
 
+
 body {font-family: Arial, Helvetica, sans-serif;}
 /* The Modal (background) */
 .modal {
@@ -77,4 +78,12 @@ body {font-family: Arial, Helvetica, sans-serif;}
   padding: 2px 16px;
   background-color: #5cb85c;
   color: white;
+}
+#sourceTA {
+    display: block;
+}
+#targetDiv {
+  border: 1px dashed #333333;
+  width: 600px;
+  height: 400px;
 }
