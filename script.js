@@ -165,7 +165,7 @@ function updateOutput() {
 save_button.addEventListener('click', updateOutput);
 
 // ---------------------------------- Jeremy mardown --------------------------//
-/*
+//
 // If you use require (Node etc), require as first the module and then create the instance
 let Remarkable = require('remarkable');
 // If you're in the browser, the Remarkable class is already available in the window
