@@ -164,17 +164,13 @@ function updateOutput() {
 // je lance la fonction au click
 save_button.addEventListener('click', updateOutput);
 
-<<<<<<< HEAD
 // -------------------------- Jeremy markdown convert to html--------------------------//
-=======
-// ---------------------------------- Jeremy mardown --------------------------//
-//
->>>>>>> 268b7a1125564008319722c972e861a449dad626
+
 // If you use require (Node etc), require as first the module and then create the instance
 let Remarkable = require('remarkable');
 // If you're in the browser, the Remarkable class is already available in the window
 let md = new Remarkable();
-<<<<<<< HEAD
+
 
 // document.querySelector(".save-button").addEventListener("click", () => {
 // 	let text = (document.getElementById("content-input").value);
@@ -189,5 +185,3 @@ document.querySelector(".save-button").addEventListener("click", () => {
 	document.getElementsByClassName(".content-output").innerHTML = md.render(text);
 	console.log(md.render("hello" + text));
 })
-=======
->>>>>>> 268b7a1125564008319722c972e861a449dad626
