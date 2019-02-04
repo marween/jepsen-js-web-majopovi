@@ -165,16 +165,21 @@ function updateOutput() {
 save_button.addEventListener('click', updateOutput);
 
 // -------------------------- Jeremy markdown convert to html--------------------------//
-// // If you use require (Node etc), require as first the module and then create the instance
-// let Remarkable = require('remarkable');
-// // If you're in the browser, the Remarkable class is already available in the window
-// let md = new Remarkable();
-//
+// If you use require (Node etc), require as first the module and then create the instance
+let Remarkable = require('remarkable');
+// If you're in the browser, the Remarkable class is already available in the window
+let md = new Remarkable();
+
 // document.querySelector(".save-button").addEventListener("click", () => {
-//   let text = (document.getElementById("content-input").value);
+// 	let text = (document.getElementById("content-input").value);
 //   // let butReturn = `<button class="butReturn" id="butReturn" onClick="window.location.reload()">Try again</button>`;
 //   // let f = document.querySelector(".form");
 //   // f.parentNode.removeChild(f);
 //   document.getElementById("content-output").innerHTML = md.render(text);
 //   console.log(md.render(text))
 // })
+document.querySelector(".save-button").addEventListener("click", () => {
+	let text = (document.getElementsByClassName(".content-input").value);
+	document.getElementsByClassName(".content-output").innerHTML = md.render(text);
+	console.log(md.render("hello" + text));
+})
