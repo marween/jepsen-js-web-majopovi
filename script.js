@@ -51,15 +51,15 @@ function updateOutput() {
 	localStorage.setItem('content', JSON.stringify(data));
 
 	let toDisplay = "";
-	//je parcours mon tableau 
+	//je parcours mon tableau
 	for(let i=0; i<data.length; i++ ){
-		
+
 
 		toDisplay += "<p>" + data[i] + "</p>";
-		
-	}	
+
+	}
 	output_div.innerHTML = toDisplay;
-	
+	console.log(data);
 }
 // je lance la fonction au click
 save_button.addEventListener('click', updateOutput);
