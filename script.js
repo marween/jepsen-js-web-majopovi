@@ -34,22 +34,20 @@ let dataJson = [
     {
       "idea": "Test: Idea 1",
       "description": "Idea 1 description",
-      "data": []
+      "commentary": []
     },
     {
       "idea": "Test: Idea 2",
       "description": "Idea 2 description",
-      "data": []
+      "commentary": []
     }
   ];
 //}
 
 //adding 'ideas' on the landing page from json
 function addIdeas () {
-2
   let str = "<ul id='listIdeas'>";
   for (let i in dataJson){
-    console.log("test objet:" + dataJson[i]);
     let idNumber = "idea"+i;
     str += "<li id='" + idNumber + "'>" + dataJson[i].idea + "</li>";
   };
@@ -102,7 +100,11 @@ function displayModalBox (idTarget) {
   //display values in modal box
   document.getElementById("modTitle").innerHTML = dataJson[index].idea;
   document.getElementById("modDescr").innerHTML = dataJson[index].description;
-  document.getElementById("addButtons").innerHTML =  "<span><input type=\"button\" id=\"btnEdit\" value=\"Edit\"><input type=\"button\" id=\"btnRemove\" value=\"Remove\"></span>";
+	document.querySelector('.save-button').addEventListener('click', () => updateOutput(index));
+	//updateOutput(index);
+	//document.getElementById("modCom").innerHTML = dataJson[index].commentary;
+	document.getElementById("addButtons").innerHTML =  "<span><input type=\"button\" id=\"btnEdit\" value=\"Edit\"><input type=\"button\" id=\"btnRemove\" value=\"Remove\"></span>";
+  //document.getElementById("addButtons").innerHTML =  dataJson[index].description;
   //edit +save (in 2 steps)
   document.getElementById("btnEdit").onclick = function() {
     document.getElementById("modTitle").innerHTML = "Name of the idea : <input type=\"text\" id=\"idea\" value=\"" + dataJson[index].idea + "\">";
@@ -131,30 +133,27 @@ prepareButton ();
 ////////////////////////Magali/////////////////////////////
 let input_textarea = document.querySelector('.content-input');
 let output_div = document.querySelector('.content-output');
-let save_button = document.querySelector('.save-button');
-let data = [];
 
-function updateOutput() {
+
+function updateOutput(index) {
 	//J'ajoute le dernier commentaire et je vide la zone de texte
-	data.push(input_textarea.value);
+	dataJson[index].commentary.push(input_textarea.value);
 	input_textarea.value="";
 	//je string mon tableau clef: content value: data
-	localStorage.setItem('content', JSON.stringify(data));
+	//localStorage.setItem('content', JSON.stringify(dataJson.commentary));
 
-	let toDisplay = "";
+	let toDisplay = dataJson[index].commentary;
 	//je parcours mon tableau
-	for(let i=0; i<data.length; i++ ){
+	for(let i=0; i<index.length; i++ ){
 
-
-		toDisplay += "<p>" + data[i] + "</p>";
+		toDisplay += "<p>" + dataJson[i].commentary + "</p>";//objet json + index
 
 	}
 	output_div.innerHTML = toDisplay;
-  console.log(data);
-
+	console.log();
 }
 // je lance la fonction au click
-save_button.addEventListener('click', updateOutput);
+//save_button.addEventListener('click', updateOutput);
 
 // ---------------------------------- Jeremy mardown --------------------------//
 /*
