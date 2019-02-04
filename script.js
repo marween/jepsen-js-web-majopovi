@@ -57,7 +57,7 @@ function listToButonsAction (i) {
     modal.style.display = "block";//change with the new modal (jeremy)
     document.getElementById("modTitle").innerHTML = dataJson[indexClicked].idea;
     document.getElementById("modDescr").innerHTML = dataJson[indexClicked].description;
-    document.getElementById("modCom").innerHTML = dataJson[indexClicked].commentary;
+    //document.getElementById("modCom").innerHTML = dataJson[indexClicked].commentary;
     //alert(indexClicked+' has been clicked !');
 }
 
