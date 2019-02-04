@@ -1,4 +1,4 @@
-<img src="./img/logoMajopovi.png" width="150"alt="logo Majopovi" align="middle">
+<img src="./img/logoMajopovi.png" width="150" alt="logo Majopovi" align="middle">
 
 # The Mad Jobless Powerfull Villain
 
