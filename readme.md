@@ -1,4 +1,4 @@
-![](./img/logoMajopovi.png)
+![](./img/logoMajopovi.png | width=150)
 
 # The Mad Jobless Powerfull Villain
 
