@@ -32,6 +32,7 @@ window.onclick = function(event) {
   if (event.target == modal) {
     modal.style.display = "none";
   }
+<<<<<<< HEAD
 }
 // Get the Edit modal
 var modal2 = document.getElementById('modal-edit');
@@ -48,8 +49,17 @@ btn2.onclick = function() {
 // When the user clicks on <span> (x), close the modal
 span2.onclick = function() {
   modal2.style.display = "none";
+=======
+>>>>>>> magali-saintgeorges
 }
+// Get the Edit modal
+var modal2 = document.getElementById('modal-edit');
+// Get the button that opens the modal
+var btn2 = document.getElementById("modal-edit-btn");
+// Get the <span> element that closes the modal
+var span2 = document.getElementsByClassName("modal-edit-close")[0];
 
+<<<<<<< HEAD
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
@@ -62,143 +72,146 @@ window.onclick = function(event) {
 
 
 /* / Modal box */
+=======
+// When the user clicks the button, open the modal
+btn2.onclick = function() {
+  modal2.style.display = "block";
+}
+>>>>>>> magali-saintgeorges
 
-//check if there is something storage otherwise create an object as exemple
-//let dataJson = JSON.parse(localStorage.getItem('dataJson'));
-/*if (dataJson === ""){*/
+// When the user clicks on <span> (x), close the modal
+span2.onclick = function() {
+  modal2.style.display = "none";
+}
+
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal2) {
+    modal2.style.display = "none";
+  }
+}
+
+
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal2) {
+    modal2.style.display = "none";
+  }
+}
+//---------------------------------------------------------
 let dataJson = [
-    {
-      "idea": "Test: Idea 1",
-      "description": "Idea 1 description",
-      //"commentary": "Idea 1 commentary"
-    },
-    {
-      "idea": "Test: Idea 2",
-      "description": "Idea 2 description",
-      //"commentary": "Idea 2 commentary"
-    }
-  ];
-//}
+{
+  "id": "0",
+  "idea": "Test: Idea 1",
+  "description": "Idea 1 description",
+  "commentary": []
+},
+{
+  "id": "1",
+  "idea": "Test: Idea 2",
+  "description": "Idea 2 description",
+  "commentary": []
+},
+{
+  "id": "2",
+  "idea": "Test: Idea 3",
+  "description": "Idea 3 description",
+  "commentary": []
+}
+];
 
-//adding 'ideas' on the landing page from json
-function addIdeas () {
+// Au chargement de page j'affiche la liste
+window.addEventListener("load", ()=>{
 
-  let str = "<ul id='listIdeas'>";
-  for (let i in dataJson){
-    console.log("test objet:" + dataJson[i]);
-    let idNumber = "idea"+i;
-    str += "<li id='" + idNumber + "'>" + dataJson[i].idea + "</li>";
-  };
-  str += '</ul>';
-  document.getElementById("contentIdeas").innerHTML = str;
-};
-
-//listener for buttons, parse the childrens of the list 'listIdeas'
-//created in addIdeas and added on landing page
-//THEN create a button for each element/idea in the list
-function prepareButton() {
-  if (listIdeas.hasChildNodes()) {
-    let children = listIdeas.childNodes;
-      for (let i = 0; i < children.length; i++) {
-        let temp = children[i].id;
-        document.getElementById(temp).onclick = function() {
-        displayModalBox(temp);
-        };
-      };
-    };
-    //button to add an item
-    document.getElementById("btnAdd").onclick = function() {
-      modal.style.display = "block";
-      document.getElementById("modTitle").innerHTML = "Name of the idea : <input type=\"text\" id=\"ideaNew\">";
-      document.getElementById("modDescr").innerHTML = "Description: <input type=\"text\" id=\"descriptionNew\">";
-      //document.getElementById("modCom").innerHTML = "Commentary <input type=\"text\" id=\"commentaryNew\">";
-      document.getElementById("addButtons").innerHTML = "<input type=\"button\" id=\"btnSaveNew\" value=\"Save\">";
-        document.getElementById("btnSaveNew").onclick = function() {
-        let newIdea = document.getElementById("ideaNew").value;
-        let newDes = document.getElementById("descriptionNew").value;
-        //let newCom = document.getElementById("commentaryNew").value;
-        console.log(newIdea);
-        //dataJson.push({idea: [newIdea],description: [newDes],commentary: [newCom]});
-        modal.style.display = "none"; //remove modal box
-        addIdeas (); //make a new list without the new element
-        prepareButton(); //listeners on new elements
-        };
-      };
-      //button to save json
-      document.getElementById("saveAll").onclick = function() {
-      localStorage.setItem('dataJson', JSON.stringify(dataJson));
-      }
-};
-
-//change the default content of the modal box with the one in the
-//JSON object
-function displayModalBox (idTarget) {
-  let index = parseInt(idTarget.substr(4));
-  modal.style.display = "block";
-  //display values in modal box
-  document.getElementById("modTitle").innerHTML = dataJson[index].idea;
-  document.getElementById("modDescr").innerHTML = dataJson[index].description;
-//  document.getElementById("modCom").innerHTML = dataJson[index].commentary;
-  document.getElementById("addButtons").innerHTML =  "<span><input type=\"button\" id=\"btnEdit\" value=\"Edit\"><input type=\"button\" id=\"btnRemove\" value=\"Remove\"></span>";
-  //edit +save (in 2 steps)
-  document.getElementById("btnEdit").onclick = function() {
-    document.getElementById("modTitle").innerHTML = "Name of the idea : <input type=\"text\" id=\"idea\" value=\"" + dataJson[index].idea + "\">";
-    document.getElementById("modDescr").innerHTML = "Description: <input type=\"text\" id=\"description\" value=\"" + dataJson[index].description + "\">";
-    //document.getElementById("modCom").innerHTML = "Commentary <input type=\"text\" id=\"commentary\" value=\"" + dataJson[index].commentary + "\">";
-    document.getElementById("addButtons").innerHTML =  "<span><input type=\"button\" id=\"btnSave\" value=\"Save\"></span><span> / Close box to aboard</span>";
-    document.getElementById("btnSave").onclick = function() {
-      dataJson[index].idea = document.getElementById("idea").value;
-      dataJson[index].description = document.getElementById("description").value;
-      //dataJson[index].commentary = document.getElementById("commentary").value;
-      modal.style.display = "none"; //remove modal box
-      document.getElementById(idTarget).innerHTML = document.getElementById("idea").value;
-    }
-  };
-  //remove
-  document.getElementById("btnRemove").onclick = function() {
-      //dataJson.splice(index, index);//delete index element
-      delete dataJson[index];
-      /*while( listIdeas.firstChild) {
-          listIdeas.removeChild( listIdeas.firstChild);
-      }*/
-      modal.style.display = "none"; //remove modal box
-      addIdeas (); //make a new list without the element
-      prepareButton(); //listeners on new elements
-      //console.log(index);
-  };
-};
-
-//launch functions
-addIdeas ();
-prepareButton ();
+  displayIdeas();
+});
 
 ////////////////////////Magali/////////////////////////////
-let input_textarea = document.querySelector('.content-input');
-let output_div = document.querySelector('.content-output');
-let save_button = document.querySelector('.save-button');
-let data = [];
-
-function updateOutput() {
-	//J'ajoute le dernier commentaire et je vide la zone de texte
-	data.push(input_textarea.value);
-	input_textarea.value="";
-	//je string mon tableau clef: content value: data
-	localStorage.setItem('content', JSON.stringify(data));
-
-	let toDisplay = "";
-	//je parcours mon tableau
-	for(let i=0; i<data.length; i++ ){
-
-
-		toDisplay += "<p>" + data[i] + "</p>";
-
-	}
-	output_div.innerHTML = toDisplay;
-  console.log(data);
-
+// fonction qui liste la liste des idées
+//-----------------------------------------
+let displayIdeas = () => {
+  //decommenter pour nettoyer le localstorage
+  //localStorage.setItem('content', JSON.stringify(dataJson));
+  let listIdeas = localStorage.getItem('content') ? JSON.parse(localStorage.getItem('content')) : [];
+  let toDisplay = [];
+  console.log(listIdeas);
+  for (let i = 0; i<listIdeas.length; i++){
+    toDisplay += "<li>id="+listIdeas[i].id+" "+listIdeas[i].idea+"</li>";
+  }
+  
+  document.querySelector('ul').innerHTML += toDisplay;    
 }
+
+//Fonction ajoute idée, desciption, id
+//---------------------------------------------------
+
+let newIdea = document.querySelector("#modal-title");
+let newDes = document.querySelector("#modal-descr");
+
+
+let addIdea = (i, d) =>{
+  let listIdeas = localStorage.getItem('content') ? JSON.parse(localStorage.getItem('content')) : [];
+  
+  listIdeas.push({id: listIdeas.length ,idea: i.value,description: d.value,commentary: []});
+  localStorage.setItem('content', JSON.stringify(listIdeas));
+}
+
 // je lance la fonction au click
 save_button.addEventListener('click', updateOutput);
+
+
+
+document.querySelector(".save-button").addEventListener("click", () => {
+	let text = (document.getElementsByClassName(".content-input").value);
+	document.getElementsByClassName(".content-output").innerHTML = md.render(text);
+	console.log(md.render("hello" + text));
+})
+
+document.querySelector(".add-idea").addEventListener("click", () => {
+  addIdea(newIdea, newDes);
+
+});
+
+// fonction qui ajoute un commentaire 
+// passer en parametre le numero de l'idée
+
+//----------------------------------------
+let input_textarea = document.querySelector('.modal-comment');
+let output_div = document.querySelector('.modal-com');
+let save_button = document.querySelector('.save-idea');
+let listIdeas = localStorage.getItem('content') ? JSON.parse(localStorage.getItem('content')) : [];
+let listComments = listIdeas[1].commentary;
+let comment ="";
+
+let addComments = () => {
+  
+  comment.push(input_textarea.value);
+  
+  //localStorage.setItem('content', JSON.stringify(listIdeas));
+
+  input_textarea.value="";
+  let toDisplay = "";
+
+  for(let i=0; i<listComments.length; i++ ){
+
+    toDisplay += "<p>" + listComments[i] + "</p>";
+  }
+  output_div.innerHTML = toDisplay;
+
+};
+
+//save_button.addEventListener('click', () => {
+  //addComments();
+//};
+
+// fonction qui delete une idée
+//-------------------------------------------------
+
+//fonction qui edit une idée
+//--------------------------------------------------
+
 
 // -------------------------- Jeremy markdown convert to html--------------------------//
 
@@ -209,15 +222,10 @@ let md = new Remarkable();
 
 
 // document.querySelector(".save-button").addEventListener("click", () => {
-// 	let text = (document.getElementById("content-input").value);
+//  let text = (document.getElementById("content-input").value);
 //   // let butReturn = `<button class="butReturn" id="butReturn" onClick="window.location.reload()">Try again</button>`;
 //   // let f = document.querySelector(".form");
 //   // f.parentNode.removeChild(f);
 //   document.getElementById("content-output").innerHTML = md.render(text);
 //   console.log(md.render(text))
 // })
-document.querySelector(".save-button").addEventListener("click", () => {
-	let text = (document.getElementsByClassName(".content-input").value);
-	document.getElementsByClassName(".content-output").innerHTML = md.render(text);
-	console.log(md.render("hello" + text));
-})
