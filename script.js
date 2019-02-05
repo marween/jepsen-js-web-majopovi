@@ -94,7 +94,8 @@ let displayIdeas = () => {
   for (let i = 0; i<listIdeas.length; i++){
     let li = document.createElement ("li");
     li.innerText = listIdeas[i].idea;
-
+//edition of ideas
+//--------------------------------------------------------------
     let editBtn = document.createElement ("button");
     editBtn.setAttribute("class", "modal-edit-btn");
     editBtn.innerText = "Edit";
@@ -112,7 +113,8 @@ let displayIdeas = () => {
       });
       modalEdit.style.display = "block";
     });
-
+//delete
+//--------------------------------------------------------------
     let deleteBtn = document.createElement ("button");
     deleteBtn.setAttribute("id", "delete" + i);
     deleteBtn.setAttribute("class", "modal-delete-btn");
@@ -128,6 +130,35 @@ let displayIdeas = () => {
     ul.appendChild(deleteBtn);
     ul.appendChild(editBtn);
   }
+// fonction qui ajoute un commentaire
+// passer en parametre le numero de l'idée
+//----------------------------------------
+
+  let input_textarea = document.querySelector('.modal-comment');
+  let output_div = document.querySelector('.modal-com');
+  let save_button = document.querySelector('.save-idea');
+
+  let listComments = listIdeas[1].commentary;
+  let comment ="";
+
+  let addComments = () => {
+
+    comment.push(input_textarea.value);
+
+    //localStorage.setItem('content', JSON.stringify(listIdeas));
+
+    input_textarea.value="";
+    let toDisplay = "";
+
+    for(let i=0; i<listComments.length; i++ ){
+
+      toDisplay += "<p>" + listComments[i] + "</p>";
+    }
+    output_div.innerHTML = toDisplay;
+
+  };
+
+
 
 }
 
@@ -150,42 +181,7 @@ document.querySelector(".add-idea").addEventListener("click", () => {
 
 });
 
-// fonction qui ajoute un commentaire
-// passer en parametre le numero de l'idée
 
-//----------------------------------------
-let input_textarea = document.querySelector('.modal-comment');
-let output_div = document.querySelector('.modal-com');
-let save_button = document.querySelector('.save-idea');
-let listIdeas = localStorage.getItem('content') ? JSON.parse(localStorage.getItem('content')) : [];
-let listComments = listIdeas[1].commentary;
-let comment ="";
-
-let addComments = () => {
-
-  comment.push(input_textarea.value);
-
-  //localStorage.setItem('content', JSON.stringify(listIdeas));
-
-  input_textarea.value="";
-  let toDisplay = "";
-
-  for(let i=0; i<listComments.length; i++ ){
-
-    toDisplay += "<p>" + listComments[i] + "</p>";
-  }
-  output_div.innerHTML = toDisplay;
-
-};
-
-//save_button.addEventListener('click', () => {
-  //addComments();
-//};
-
-
-
-//fonction qui edit une idée
-//--------------------------------------------------
 
 
 // -------------------------- Jeremy markdown convert to html--------------------------//
