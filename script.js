@@ -40,8 +40,6 @@ var modal2 = document.getElementById('modal-edit');
 // Get the <span> element that closes the modal
 var span2 = document.getElementsByClassName("modal-edit-close")[0];
 
-
-
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
   if (event.target == modal2) {
@@ -76,12 +74,17 @@ window.addEventListener("load", ()=>{
   displayIdeas();
 });
 
+// When adding idea, reload the page
+document.querySelector(".add-idea").addEventListener("click", () => {
+  location.reload();
+})
+
 ////////////////////////Magali/////////////////////////////
 // fonction qui liste la liste des idées
 //-----------------------------------------
 let displayIdeas = () => {
   //decommenter pour nettoyer le localstorage
-  //localStorage.setItem('content', JSON.stringify(dataJson));
+  // localStorage.setItem('content', JSON.stringify(dataJson));
   let listIdeas = localStorage.getItem('content') ? JSON.parse(localStorage.getItem('content')) : [];
 
   let toDisplay = "";
@@ -109,6 +112,7 @@ let displayIdeas = () => {
     ul.appendChild(deleteBtn);
     ul.appendChild(editBtn);
   }
+
 }
 
 //Fonction ajoute idée, desciption, id
@@ -171,24 +175,12 @@ let addComments = () => {
 // -------------------------- Jeremy markdown convert to html--------------------------//
 
 // If you use require (Node etc), require as first the module and then create the instance
-//let Remarkable = require('remarkable');
+let Remarkable = require('remarkable');
 // If you're in the browser, the Remarkable class is already available in the window
-//let md = new Remarkable();
+let md = new Remarkable();
 
-
-// document.querySelector(".save-button").addEventListener("click", () => {
-//  let text = (document.getElementById("content-input").value);
-//   // let butReturn = `<button class="butReturn" id="butReturn" onClick="window.location.reload()">Try again</button>`;
-//   // let f = document.querySelector(".form");
-//   // f.parentNode.removeChild(f);
-//   document.getElementById("content-output").innerHTML = md.render(text);
-//   console.log(md.render(text))
-// })
-
-/*
-document.querySelector(".save-button").addEventListener("click", () => {
-  let text = (document.getElementsByClassName(".content-input").value);
-  document.getElementsByClassName(".content-output").innerHTML = md.render(text);
-  console.log(md.render("hello" + text));
+document.querySelector(".add-idea").addEventListener("click", () => {
+  let text = (document.getElementById("modal-descr").value);
+  // document.getElementById("idea-descr").innerHTML = md.render(text);
+  console.log(md.render(text));
 })
-*/
