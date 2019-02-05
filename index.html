@@ -18,6 +18,7 @@
 <body>
   <div class="container">
     <header>
+<<<<<<< HEAD
       <h1 class="titleRed">Mad Jobless Powerfull Villains</h1>
       <h2>
         <strong><i class="fas fa-arrow-right"></i> Team of great villains <i class="fas fa-arrow-left"></i></strong>
@@ -25,24 +26,45 @@
     </header>
     <div class="content">
       <img src="/img/logo.png">
+=======
+      <h1>Majopovi</h1>
+      <h2>
+        <strong><i class="fas fa-arrow-right"></i> Majopovi <i class="fas fa-arrow-left"></i></strong>
+      </h2>
+    </header>
+    <div class="content">
+>>>>>>> master
       <article class="ideas-list">
 
         <!--insert list of ideas here-->
 
         <ul></ul>
+<<<<<<< HEAD
         <button id="modal-edit-btn">Edit</button>
         <button id="modal-add-btn">Click here to add a bad idea</button>
+=======
+        <button id="modal-add-btn">Add Modal</button>
+>>>>>>> master
       </article>
       <!--Modal for adding ideas-->
       <div id="modal-add" class="modal">
         <div class="modal-content">
           <div class="modal-header">
+<<<<<<< HEAD
             <h1>What's your bad idea ?</h1>
             <span id="close" class="modal-add-close">&times;</span>
           </div>
           <input id="modal-title" placeholder="Title"></input>
           <textarea id="modal-descr" cols="30" rows="10"></textarea>
           <button class="add-idea">Add your bad idea</button>
+=======
+            <h1>Add an idea</h1>
+            <span id="close" class="modal-add-close">&times;</span>
+          </div>
+          <input id="modal-title" value="Title"></input>
+          <textarea id="modal-descr" cols="30" rows="10"></textarea>
+          <button class="add-idea">Add your idea</button>
+>>>>>>> master
         </div>
       </div>
       <!--Modal for editing ideas-->
@@ -52,6 +74,7 @@
             <h1>Edit an idea</h1>
             <span id="close" class="modal-edit-close">&times;</span>
           </div>
+<<<<<<< HEAD
           <h1 class="idea-title">Idea Title</h1>
           <p class="idea-descr">Idea Description</p>
           <input id="modal-title" value="content of title"></input>
@@ -62,6 +85,29 @@
           <textarea class="modal-comment" value="Comment"></textarea>
           <button class="add-comment">Add comment</button>
           <button class="save-idea">Save</button>
+=======
+          <h1 class="idea-title">Title:</h1>
+          <input id="edit-title" value="content of title"></input>
+          <p class="idea-descr">Idea Description:</p>
+          <textarea id="edit-descr" cols="30" rows="10"></textarea>
+          <button class="save-idea">Save</button>
+        </div>
+      </div>
+      <!--Modal for show comments-->
+      <div id="modal-comment" class="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1>Comment an idea</h1>
+            <span id="close" class="modal-edit-close">&times;</span>
+          </div>
+          <h1 class="idea-title">Idea Title</h1>
+          <p class="idea-descr">Idea Description</p>
+          <h2>Comments:</h2>
+          <p class="modal-com">List of comments</p>
+          <h2>Add a comment:</h2>
+          <textarea class="modal-comment" value="Comment"></textarea>
+          <button class="add-comment">Add comment</button>
+>>>>>>> master
         </div>
       </div>
     </div>

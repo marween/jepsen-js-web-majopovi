@@ -11,8 +11,15 @@ import "./style.scss";
 /* With buttons in html to open the right one for test purpos */
 // Get the Add modal
 var modal = document.getElementById('modal-add');
+<<<<<<< HEAD
 // Get the button that opens the modal
 var btn = document.getElementById("modal-add-btn");
+=======
+var modalEdit = document.getElementById('modal-edit');
+// Get the button that opens the modal
+var btn = document.getElementById("modal-add-btn");
+var edit = document.querySelector('modal-edit-btn');
+>>>>>>> master
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("modal-add-close")[0];
 
@@ -32,6 +39,7 @@ window.onclick = function(event) {
   if (event.target == modal) {
     modal.style.display = "none";
   }
+<<<<<<< HEAD
 
 }
 // Get the Edit modal
@@ -108,6 +116,103 @@ let displayIdeas = () => {
   }
 
   document.querySelector('ul').innerHTML += toDisplay;
+=======
+
+
+}
+// Get the Edit modal
+var modal2 = document.getElementById('modal-edit');
+// Get the <span> element that closes the modal
+var span2 = document.getElementsByClassName("modal-edit-close")[0];
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal2) {
+    modal2.style.display = "none";
+  }
+}
+//---------------------------------------------------------
+let dataJson = [
+{
+  "id": "0",
+  "idea": "Test: Idea 1",
+  "description": "Idea 1 description",
+  "commentary": []
+},
+{
+  "id": "1",
+  "idea": "Test: Idea 2",
+  "description": "Idea 2 description",
+  "commentary": []
+},
+{
+  "id": "2",
+  "idea": "Test: Idea 3",
+  "description": "Idea 3 description",
+  "commentary": []
+}
+];
+
+// Au chargement de page j'affiche la liste
+window.addEventListener("load", ()=>{
+
+  displayIdeas();
+});
+
+// When adding idea, reload the page
+document.querySelector(".add-idea").addEventListener("click", () => {
+  location.reload();
+})
+
+////////////////////////Magali/////////////////////////////
+// fonction qui liste la liste des idées
+//-----------------------------------------
+let displayIdeas = () => {
+  //decommenter pour nettoyer le localstorage
+  // localStorage.setItem('content', JSON.stringify(dataJson));
+  let listIdeas = localStorage.getItem('content') ? JSON.parse(localStorage.getItem('content')) : [];
+
+  let toDisplay = "";
+
+  for (let i = 0; i<listIdeas.length; i++){
+    let li = document.createElement ("li");
+    li.innerText = listIdeas[i].idea;
+
+    let editBtn = document.createElement ("button");
+    editBtn.setAttribute("class", "modal-edit-btn");
+    editBtn.innerText = "Edit";
+
+    editBtn.addEventListener('click', () => {
+      console.log(document.getElementById("modal-title"));
+      document.querySelector("#edit-title").value = listIdeas[i].idea;
+      document.querySelector("#edit-descr").innerText = listIdeas[i].description;
+      document.querySelector(".modal-com").innerText = listIdeas[i].commentary;
+      document.querySelector(".save-idea").addEventListener("click", () => {
+        listIdeas[i].idea = document.querySelector("#edit-title").value;
+        listIdeas[i].description = document.querySelector("#edit-descr").value;
+        localStorage.setItem('content', JSON.stringify(listIdeas));
+        window.location.reload();
+      });
+      modalEdit.style.display = "block";
+    });
+
+    let deleteBtn = document.createElement ("button");
+    deleteBtn.setAttribute("id", "delete" + i);
+    deleteBtn.setAttribute("class", "modal-delete-btn");
+    deleteBtn.innerText = "Delete";
+
+    deleteBtn.addEventListener('click', () => {
+      listIdeas.splice(i, 1);
+      localStorage.setItem('content', JSON.stringify(listIdeas));
+      window.location.reload();
+    });
+    let ul =document.querySelector('ul');
+    ul.appendChild(li);
+    ul.appendChild(deleteBtn);
+    ul.appendChild(editBtn);
+  }
+
+>>>>>>> master
 }
 
 //Fonction ajoute idée, desciption, id
@@ -161,8 +266,29 @@ let addComments = () => {
   //addComments();
 //};
 
+<<<<<<< HEAD
 // fonction qui delete une idée
 //-------------------------------------------------
 
 //fonction qui edit une idée
 //--------------------------------------------------
+=======
+
+
+//fonction qui edit une idée
+//--------------------------------------------------
+
+
+// -------------------------- Jeremy markdown convert to html--------------------------//
+
+// If you use require (Node etc), require as first the module and then create the instance
+let Remarkable = require('remarkable');
+// If you're in the browser, the Remarkable class is already available in the window
+let md = new Remarkable();
+
+document.querySelector(".add-idea").addEventListener("click", () => {
+  let text = (document.getElementById("modal-descr").value);
+  // document.getElementById("idea-descr").innerHTML = md.render(text);
+  console.log(md.render(text));
+})
+>>>>>>> master
