@@ -101,7 +101,7 @@ let displayIdeas = () => {
   //decommenter pour nettoyer le localstorage
   //localStorage.setItem('content', JSON.stringify(dataJson));
   let listIdeas = localStorage.getItem('content') ? JSON.parse(localStorage.getItem('content')) : [];
-  let toDisplay = [];
+  let toDisplay = "";
   console.log(listIdeas);
   for (let i = 0; i<listIdeas.length; i++){
     toDisplay += "<li>id="+listIdeas[i].id+" "+listIdeas[i].idea+"</li>";
