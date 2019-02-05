@@ -94,6 +94,20 @@ let displayIdeas = () => {
   for (let i = 0; i<listIdeas.length; i++){
     let li = document.createElement ("li");
     li.innerText = listIdeas[i].idea;
+
+    let display = document.createElement ("button");
+    display.setAttribute("id", "display" + i);
+    display.setAttribute("class", "display");
+    display.innerText = "Display";
+    //display.addEventListener('click', () => {}
+    
+    let addCommBtn = document.createElement ("button");
+    addCommBtn.setAttribute("id", "displayCom" + i);
+    addCommBtn.setAttribute("class", "add-comment");
+    addCommBtn.innerText = "Add commentary";
+    //addCommBtn.addEventListener('click', () => {}
+
+
 //edition of ideas
 //--------------------------------------------------------------
     let editBtn = document.createElement ("button");
@@ -164,6 +178,8 @@ let displayIdeas = () => {
 
 //Fonction ajoute idée, desciption, id
 //---------------------------------------------------
+
+
 
 let newIdea = document.querySelector("#modal-title");
 let newDes = document.querySelector("#modal-descr");
