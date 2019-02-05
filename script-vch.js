@@ -23,7 +23,6 @@ if (dataJson==null){
       "commentary": "Idea 2 commentary"
     }
   ]
-
 }
 
 //adding 'ideas' on the landing page from json
