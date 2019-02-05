@@ -100,11 +100,17 @@ let displayIdeas = () => {
     editBtn.innerText = "Edit";
 
     editBtn.addEventListener('click', () => {
-         document.querySelector(".idea-title").value = listIdeas[i].idea;
-         document.querySelector(".idea-descr").value = listIdeas[i].description;
-         //idea-descr = listIdeas[i].description;
-        // = listIdeas[i].commentary;
-        modalEdit.style.display = "block";
+      console.log(document.getElementById("modal-title"));
+      document.querySelector("#edit-title").value = listIdeas[i].idea;
+      document.querySelector("#edit-descr").innerText = listIdeas[i].description;
+      //document.querySelector(".modal-com").innerText = listIdeas[i].commentary;
+      document.querySelector(".save-idea").addEventListener("click", () => {
+        listIdeas[i].idea = document.querySelector("#edit-title").value;
+        listIdeas[i].description = document.querySelector("#edit-descr").value;
+        localStorage.setItem('content', JSON.stringify(listIdeas));
+        window.location.reload();
+      });
+      modalEdit.style.display = "block";
     });
 
     let deleteBtn = document.createElement ("button");
