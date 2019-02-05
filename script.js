@@ -119,7 +119,7 @@ window.onclick = function(event) {
   if (event.target == modal) {
     modal.style.display = "none";
   }
-<<<<<<< HEAD
+
 }
 // Get the Edit modal
 var modal2 = document.getElementById('modal-edit');
@@ -136,8 +136,7 @@ btn2.onclick = function() {
 // When the user clicks on <span> (x), close the modal
 span2.onclick = function() {
   modal2.style.display = "none";
-=======
->>>>>>> magali-saintgeorges
+
 }
 // Get the Edit modal
 var modal2 = document.getElementById('modal-edit');
@@ -145,39 +144,6 @@ var modal2 = document.getElementById('modal-edit');
 var btn2 = document.getElementById("modal-edit-btn");
 // Get the <span> element that closes the modal
 var span2 = document.getElementsByClassName("modal-edit-close")[0];
-
-<<<<<<< HEAD
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal2) {
-    modal2.style.display = "none";
-  }
-}
-
-
-
-
-/* / Modal box */
-=======
-// When the user clicks the button, open the modal
-btn2.onclick = function() {
-  modal2.style.display = "block";
-}
->>>>>>> magali-saintgeorges
-
-// When the user clicks on <span> (x), close the modal
-span2.onclick = function() {
-  modal2.style.display = "none";
-}
-
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal2) {
-    modal2.style.display = "none";
-  }
-}
 
 
 
@@ -227,8 +193,8 @@ let displayIdeas = () => {
   for (let i = 0; i<listIdeas.length; i++){
     toDisplay += "<li>id="+listIdeas[i].id+" "+listIdeas[i].idea+"</li>";
   }
-  
-  document.querySelector('ul').innerHTML += toDisplay;    
+
+  document.querySelector('ul').innerHTML += toDisplay;
 }
 >>>>>>> origin/master
 
@@ -265,28 +231,17 @@ let newDes = document.querySelector("#modal-descr");
 
 let addIdea = (i, d) =>{
   let listIdeas = localStorage.getItem('content') ? JSON.parse(localStorage.getItem('content')) : [];
-  
+
   listIdeas.push({id: listIdeas.length ,idea: i.value,description: d.value,commentary: []});
   localStorage.setItem('content', JSON.stringify(listIdeas));
 }
-
-// je lance la fonction au click
-save_button.addEventListener('click', updateOutput);
-
-
-
-document.querySelector(".save-button").addEventListener("click", () => {
-	let text = (document.getElementsByClassName(".content-input").value);
-	document.getElementsByClassName(".content-output").innerHTML = md.render(text);
-	console.log(md.render("hello" + text));
-})
 
 document.querySelector(".add-idea").addEventListener("click", () => {
   addIdea(newIdea, newDes);
 
 });
 
-// fonction qui ajoute un commentaire 
+// fonction qui ajoute un commentaire
 // passer en parametre le numero de l'idée
 
 //----------------------------------------
@@ -298,9 +253,9 @@ let listComments = listIdeas[1].commentary;
 let comment ="";
 
 let addComments = () => {
-  
+
   comment.push(input_textarea.value);
-  
+
   //localStorage.setItem('content', JSON.stringify(listIdeas));
 
   input_textarea.value="";
@@ -328,9 +283,9 @@ let addComments = () => {
 // -------------------------- Jeremy markdown convert to html--------------------------//
 
 // If you use require (Node etc), require as first the module and then create the instance
-let Remarkable = require('remarkable');
+//let Remarkable = require('remarkable');
 // If you're in the browser, the Remarkable class is already available in the window
-let md = new Remarkable();
+//let md = new Remarkable();
 
 
 // document.querySelector(".save-button").addEventListener("click", () => {
@@ -341,4 +296,12 @@ let md = new Remarkable();
 //   document.getElementById("content-output").innerHTML = md.render(text);
 //   console.log(md.render(text))
 // })
+<<<<<<< HEAD
 >>>>>>> origin/master
+=======
+document.querySelector(".save-button").addEventListener("click", () => {
+  let text = (document.getElementsByClassName(".content-input").value);
+  document.getElementsByClassName(".content-output").innerHTML = md.render(text);
+  console.log(md.render("hello" + text));
+})
+>>>>>>> beded6b9a6b3f011e069ca634149c6a5c8238f46
