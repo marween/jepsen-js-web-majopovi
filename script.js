@@ -12,9 +12,12 @@ import "./style.scss";
 // Get the Add modal
 var modal = document.getElementById('modal-add');
 var modalEdit = document.getElementById('modal-edit');
+var modalCom = document.getElementById('modal-comment');
+
 // Get the button that opens the modal
 var btn = document.getElementById("modal-add-btn");
 var edit = document.querySelector('modal-edit-btn');
+var commentary = document.querySelector('add-comment');
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("modal-add-close")[0];
 
@@ -22,7 +25,11 @@ var span = document.getElementsByClassName("modal-add-close")[0];
 btn.onclick = function() {
   modal.style.display = "block";
 }
-
+/*
+commentary.onclick = function() {
+  modalCom.style.display = "block";
+}
+*/
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
   modal.style.display = "none";
@@ -34,8 +41,6 @@ window.onclick = function(event) {
   if (event.target == modal) {
     modal.style.display = "none";
   }
-
-
 }
 // Get the Edit modal
 var modal2 = document.getElementById('modal-edit');
@@ -100,12 +105,12 @@ let displayIdeas = () => {
     display.setAttribute("class", "display");
     display.innerText = "Display";
     //display.addEventListener('click', () => {}
-    
+
     let addCommBtn = document.createElement ("button");
     addCommBtn.setAttribute("id", "displayCom" + i);
-    addCommBtn.setAttribute("class", "add-comment");
+    addCommBtn.setAttribute("class", "modal-com-btn");
     addCommBtn.innerText = "Add commentary";
-    //addCommBtn.addEventListener('click', () => {}
+    //addCommBtn.addEventListener('click', () => {modal-comment}
 
 
 //edition of ideas
