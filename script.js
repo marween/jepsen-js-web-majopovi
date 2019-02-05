@@ -103,7 +103,7 @@ let displayIdeas = () => {
       console.log(document.getElementById("modal-title"));
       document.querySelector("#edit-title").value = listIdeas[i].idea;
       document.querySelector("#edit-descr").innerText = listIdeas[i].description;
-      //document.querySelector(".modal-com").innerText = listIdeas[i].commentary;
+      document.querySelector(".modal-com").innerText = listIdeas[i].commentary;
       document.querySelector(".save-idea").addEventListener("click", () => {
         listIdeas[i].idea = document.querySelector("#edit-title").value;
         listIdeas[i].description = document.querySelector("#edit-descr").value;
