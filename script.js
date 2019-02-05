@@ -36,15 +36,10 @@ window.onclick = function(event) {
 }
 // Get the Edit modal
 var modal2 = document.getElementById('modal-edit');
-// Get the button that opens the modal
-var btn2 = document.getElementById("modal-edit-btn");
 // Get the <span> element that closes the modal
 var span2 = document.getElementsByClassName("modal-edit-close")[0];
 
-// When the user clicks the button, open the modal
-btn2.onclick = function() {
-  modal2.style.display = "block";
-}
+
 
 // When the user clicks on <span> (x), close the modal
 span2.onclick = function() {
@@ -52,9 +47,7 @@ span2.onclick = function() {
 
 }
 // Get the Edit modal
-var modal2 = document.getElementById('modal-edit');
-// Get the button that opens the modal
-var btn2 = document.getElementById("modal-edit-btn");
+var modal2 = document.querySelector(".modal-edit");
 // Get the <span> element that closes the modal
 var span2 = document.getElementsByClassName("modal-edit-close")[0];
 
@@ -101,13 +94,32 @@ let displayIdeas = () => {
   //decommenter pour nettoyer le localstorage
   //localStorage.setItem('content', JSON.stringify(dataJson));
   let listIdeas = localStorage.getItem('content') ? JSON.parse(localStorage.getItem('content')) : [];
-  let toDisplay = [];
-  console.log(listIdeas);
-  for (let i = 0; i<listIdeas.length; i++){
-    toDisplay += "<li>id="+listIdeas[i].id+" "+listIdeas[i].idea+"</li>";
-  }
 
-  document.querySelector('ul').innerHTML += toDisplay;
+  let toDisplay = "";
+
+  for (let i = 0; i<listIdeas.length; i++){
+    let li = document.createElement ("li");
+    li.innerText = listIdeas[i].idea;
+
+    let editBtn = document.createElement ("button");
+    editBtn.setAttribute("class", "modal-edit-btn");
+    editBtn.innerText = "Edit";
+
+    let deleteBtn = document.createElement ("button");
+    deleteBtn.setAttribute("id", "delete" + i);
+    deleteBtn.setAttribute("class", "modal-delete-btn");
+    deleteBtn.innerText = "Delete";
+
+    deleteBtn.addEventListener('click', () => {
+      listIdeas.splice(i, 1);
+      localStorage.setItem('content', JSON.stringify(listIdeas));
+      window.location.reload();
+    });
+    let ul =document.querySelector('ul');
+    ul.appendChild(li);
+    ul.appendChild(deleteBtn);
+    ul.appendChild(editBtn);
+  }
 }
 
 //Fonction ajoute idée, desciption, id
@@ -161,8 +173,7 @@ let addComments = () => {
   //addComments();
 //};
 
-// fonction qui delete une idée
-//-------------------------------------------------
+
 
 //fonction qui edit une idée
 //--------------------------------------------------
@@ -184,8 +195,10 @@ let addComments = () => {
 //   document.getElementById("content-output").innerHTML = md.render(text);
 //   console.log(md.render(text))
 // })
+/*
 document.querySelector(".save-button").addEventListener("click", () => {
   let text = (document.getElementsByClassName(".content-input").value);
   document.getElementsByClassName(".content-output").innerHTML = md.render(text);
   console.log(md.render("hello" + text));
 })
+*/
