@@ -11,8 +11,10 @@ import "./style.scss";
 /* With buttons in html to open the right one for test purpos */
 // Get the Add modal
 var modal = document.getElementById('modal-add');
+var modalEdit = document.getElementById('modal-edit');
 // Get the button that opens the modal
 var btn = document.getElementById("modal-add-btn");
+var edit = document.querySelector('modal-edit-btn');
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("modal-add-close")[0];
 
@@ -96,6 +98,14 @@ let displayIdeas = () => {
     let editBtn = document.createElement ("button");
     editBtn.setAttribute("class", "modal-edit-btn");
     editBtn.innerText = "Edit";
+
+    editBtn.addEventListener('click', () => {
+         document.querySelector(".idea-title").value = listIdeas[i].idea;
+         document.querySelector(".idea-descr").value = listIdeas[i].description;
+         //idea-descr = listIdeas[i].description;
+        // = listIdeas[i].commentary;
+        modalEdit.style.display = "block";
+    });
 
     let deleteBtn = document.createElement ("button");
     deleteBtn.setAttribute("id", "delete" + i);
