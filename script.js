@@ -154,12 +154,11 @@ let addComments = () => {
   }
   output_div.innerHTML = toDisplay;
 
-}
+};
 
-save_button.addEventListener('click', () => {
-  addComments();
-}
-
+//save_button.addEventListener('click', () => {
+  //addComments();
+//};
 
 // fonction qui delete une idée
 //-------------------------------------------------
