@@ -1,4 +1,4 @@
-<img src="./img/logoMajopovi.png" width="150" alt="logo Majopovi">
+<img src="./img/logo.png" width="150" alt="logo Majopovi">
 
 # The Mad Jobless Powerfull Villain
 
@@ -7,5 +7,3 @@ We need to conquer the world. Let's propose all your ideas [here](https://scalaj
 ## What's this repo anyway?
 
 It's just a group exercice for getting better at working together with Git. It's writtent in JS and HTML/CSS.
-
-Done at [BeCode](http://www.becode.org)
