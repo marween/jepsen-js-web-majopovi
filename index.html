@@ -54,12 +54,23 @@
           <input id="edit-title" value="content of title"></input>
           <p class="idea-descr">Idea Description:</p>
           <textarea id="edit-descr" cols="30" rows="10"></textarea>
+          <button class="save-idea">Save</button>
+        </div>
+      </div>
+      <!--Modal for show comments-->
+      <div id="modal-comment" class="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1>Comment an idea</h1>
+            <span id="close" class="modal-edit-close">&times;</span>
+          </div>
+          <h1 class="idea-title">Idea Title</h1>
+          <p class="idea-descr">Idea Description</p>
           <h2>Comments:</h2>
-          <p class="modal-com">(to erase)List of comments</p>
+          <p class="modal-com">List of comments</p>
           <h2>Add a comment:</h2>
           <textarea class="modal-comment" value="Comment"></textarea>
           <button class="add-comment">Add comment</button>
-          <button class="save-idea">Save</button>
         </div>
       </div>
     </div>
