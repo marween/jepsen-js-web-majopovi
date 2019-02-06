@@ -37,16 +37,17 @@ span.onclick = function() {
 
 }
 span1.onclick = function() {
- 
+
   modalEdit.style.display = "none";
 }
 span2.onclick = function() {
- 
+
   modalComment.style.display = "none";
 }
 
+
 //-----------------------fin des fct de la modal box----------------------------------
-// debut des fonctions de l'application 
+// debut des fonctions de l'application
 
 let dataJson = [
 {
@@ -80,7 +81,7 @@ document.querySelector(".add-idea").addEventListener("click", () => {
 })
 
 //-------------------------------------------------------------------------
-/*On affiche sur la page index la liste des idées 
+/*On affiche sur la page index la liste des idées
 on ajoute pour chaque idée un bouton delete edit et afficher */
 
 let displayIdeas = () => {
@@ -95,7 +96,7 @@ let displayIdeas = () => {
     let li = document.createElement ("li");
     li.innerText = listIdeas[i].idea;
 
-    //creation du bouton edit 
+    //creation du bouton edit
     let editBtn = document.createElement ("button");
     editBtn.setAttribute("class", "modal-edit-btn");
     editBtn.innerText = "Edit";
@@ -103,10 +104,12 @@ let displayIdeas = () => {
     // function edit
     editBtn.addEventListener('click', () => {
       document.querySelector("#edit-title").value = listIdeas[i].idea;
-      document.querySelector("#edit-descr").innerText = listIdeas[i].description;
+      document.querySelector("#edit-descr").value = listIdeas[i].description;
       document.querySelector(".modal-com").innerText = listIdeas[i].commentary;
-      
-      // on sauvegarde dans la local nos changement 
+
+
+
+      // on sauvegarde dans la local nos changement
       let saveBtn = document.querySelector(".save-idea");
       saveBtn.addEventListener("click", () => {
         listIdeas[i].idea = document.querySelector("#edit-title").value;
@@ -119,29 +122,28 @@ let displayIdeas = () => {
 
     }); // end of edit
 
-    
     // creation du bouton delete
     let deleteBtn = document.createElement ("button");
     deleteBtn.setAttribute("id", "delete" + i);
     deleteBtn.setAttribute("class", "modal-delete-btn");
     deleteBtn.innerText = "Delete";
 
-    // function delete 
+    // function delete
     deleteBtn.addEventListener('click', () => {
       listIdeas.splice(i, 1);
       localStorage.setItem('content', JSON.stringify(listIdeas));
       window.location.reload();
     }); // end of delete
-    
-    
-  /*Pour chaque idée, on doit pouvoir donner un 
+
+
+  /*Pour chaque idée, on doit pouvoir donner un
   commentaire qui lui est propre*/
     // creation du bouton Display
     let displayBtn = document.createElement ("button");
     displayBtn.setAttribute("class", "modal-display-btn");
     displayBtn.innerText = "Display";
 
-    
+
     // function Display
     displayBtn.addEventListener('click', () => {
 
@@ -154,26 +156,37 @@ let displayIdeas = () => {
 
       console.log(JSON.parse(localStorage.getItem('content')));
 
-      //function addComment pour ajouter 
+      //function addComment pour ajouter
       addCommentBtn.addEventListener('click', () => {
         listIdeas[i].commentary.push(input_textarea.value);
         localStorage.setItem('content', JSON.stringify(listIdeas));
 
       }); //end addComment.btn
-      
-      // on affiche tous les commentaires d'une idée 
+
+      // on affiche tous les commentaires d'une idée
       input_textarea.value="";
       let toDisplay = "";
+
       for (let j=0; j<listIdeas[i].commentary.length; j++ ){
         toDisplay += "<p>" + listIdeas[i].commentary[j] + "</p>";
       }// end of for
-      
+
       //listIdeas[i].commentary = document.querySelector(".modal-comment").value;
       pComments.innerHTML = toDisplay;
       modalComment.style.display = "block";
+      document.getElementById("show-title").innerHTML = listIdeas[i].idea;
+      // If you use require (Node etc), require as first the module and then create the instance
+      let Remarkable = require('remarkable');
+      // If you're in the browser, the Remarkable class is already available in the window
+      let md = new Remarkable();
+      let md_descr = listIdeas[i].description;
+      document.getElementById("show-descr").innerHTML = md.render(md_descr);
+
+
+
   }); //end displayBtn
 
-    // on affiche la liste avec le ul et li +  avec les boutons display, delete et edit 
+    // on affiche la liste avec le ul et li +  avec les boutons display, delete et edit
     let ul =document.querySelector('ul');
     ul.appendChild(li);
     ul.appendChild(deleteBtn);
@@ -186,8 +199,8 @@ let displayIdeas = () => {
 };// en of displayIdeas-----------------
 
 
-/*Sur la page index, on doit pouvoir ajouter une nouvelle idée 
-on a besoin de l'id de cette idée de sa value ainsi que sa description 
+/*Sur la page index, on doit pouvoir ajouter une nouvelle idée
+on a besoin de l'id de cette idée de sa value ainsi que sa description
 A chaque idée, on peut lui donner des commentaires*/
 
 //Fonction ajoute idée, desciption, id
@@ -199,33 +212,22 @@ let newDes = document.querySelector("#modal-descr");
 let addIdea = (i, d) =>{
 
   let listIdeas = localStorage.getItem('content') ? JSON.parse(localStorage.getItem('content')) : [];
-  
+
   listIdeas.push({id: listIdeas.length ,idea: i.value,description: d.value,commentary: []});
   localStorage.setItem('content', JSON.stringify(listIdeas));
 
 }// end of function addIdea
 
-// on ajoute une idée 
+// on ajoute une idée
 let addBtn =  document.querySelector(".add-idea");
 
 addBtn.addEventListener("click", () => {
   addIdea(newIdea, newDes);
 
-});// end of add 
+});// end of add
 
 
 //--------------------------------------------------------------------------------------
 
 /*Pour chaque champs texte, on doit generer du markdown*/
 // -------------------------- Jeremy markdown convert to html--------------------------//
-
-// If you use require (Node etc), require as first the module and then create the instance
-let Remarkable = require('remarkable');
-// If you're in the browser, the Remarkable class is already available in the window
-let md = new Remarkable();
-
-document.querySelector(".add-idea").addEventListener("click", () => {
-  let text = (document.getElementById("modal-descr").value);
-  // document.getElementById("idea-descr").innerHTML = md.render(text);
-  console.log(md.render(text));
-})
