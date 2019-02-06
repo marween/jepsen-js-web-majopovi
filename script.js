@@ -133,12 +133,7 @@ let displayIdeas = () => {
       listIdeas.splice(i, 1);
       localStorage.setItem('content', JSON.stringify(listIdeas));
       window.location.reload();
-    });
-    let ul =document.querySelector('ul');
-    ul.appendChild(li);
-    li.appendChild(deleteBtn);
-    li.appendChild(editBtn);
-  }
+    }); // end of delete
 
 
   /*Pour chaque idée, on doit pouvoir donner un
@@ -160,7 +155,7 @@ let displayIdeas = () => {
       input_textarea.value="";
 
       console.log(JSON.parse(localStorage.getItem('content')));
-      window.location.reload();
+
       //function addComment pour ajouter
       addCommentBtn.addEventListener('click', () => {
         listIdeas[i].commentary.push(input_textarea.value);
