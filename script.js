@@ -155,7 +155,7 @@ let displayIdeas = () => {
       input_textarea.value="";
 
       console.log(JSON.parse(localStorage.getItem('content')));
-
+      window.location.reload();
       //function addComment pour ajouter
       addCommentBtn.addEventListener('click', () => {
         listIdeas[i].commentary.push(input_textarea.value);
