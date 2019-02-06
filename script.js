@@ -45,28 +45,6 @@ span2.onclick = function() {
   modalComment.style.display = "none";
 }
 
-
-
-
-  
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
-window.onclick = function(event) {
-  if (event.target == modalEdit) {
-    modalEdit.style.display = "none";
-  }
-}
-window.onclick = function(event) {
-  if (event.target == modalComment) {
-    modalComment.style.display = "none";
-  }
-}
-
 //-----------------------fin des fct de la modal box----------------------------------
 // debut des fonctions de l'application 
 
