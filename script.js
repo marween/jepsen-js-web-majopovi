@@ -12,12 +12,11 @@ import "./style.scss";
 // Get the Add modal
 var modal = document.getElementById('modal-add');
 var modalEdit = document.getElementById('modal-edit');
-var modalCom = document.getElementById('modal-comment');
-
+var modalComment = document.getElementById('modal-comment');
 // Get the button that opens the modal
 var btn = document.getElementById("modal-add-btn");
-var edit = document.querySelector('modal-edit-btn');
-var commentary = document.querySelector('add-comment');
+var edit = document.querySelector('.modal-edit-btn');
+var display = document.querySelector('.modal-display-btn');
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("modal-add-close")[0];
 
@@ -25,11 +24,7 @@ var span = document.getElementsByClassName("modal-add-close")[0];
 btn.onclick = function() {
   modal.style.display = "block";
 }
-/*
-commentary.onclick = function() {
-  modalCom.style.display = "block";
-}
-*/
+
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
   modal.style.display = "none";
@@ -41,6 +36,8 @@ window.onclick = function(event) {
   if (event.target == modal) {
     modal.style.display = "none";
   }
+
+
 }
 // Get the Edit modal
 var modal2 = document.getElementById('modal-edit');
@@ -53,7 +50,22 @@ window.onclick = function(event) {
     modal2.style.display = "none";
   }
 }
-//---------------------------------------------------------
+
+// Get the Comment modal
+var modalComment = document.getElementById('modal-comment');
+// Get the <span> element that closes the modal
+var spanModalComment = document.getElementsByClassName("modal-comment-close")[0];
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modalComment) {
+    modalComment.style.display = "none";
+  }
+}
+
+//-----------------------fin des fct de la modal box----------------------------------
+// debut des fonctions de l'application
+
 let dataJson = [
 {
   "id": "0",
@@ -77,7 +89,6 @@ let dataJson = [
 
 // Au chargement de page j'affiche la liste
 window.addEventListener("load", ()=>{
-
   displayIdeas();
 });
 
@@ -86,125 +97,144 @@ document.querySelector(".add-idea").addEventListener("click", () => {
   location.reload();
 })
 
-////////////////////////Magali/////////////////////////////
-// fonction qui liste la liste des idées
-//-----------------------------------------
+//-------------------------------------------------------------------------
+/*On affiche sur la page index la liste des idées
+on ajoute pour chaque idée un bouton delete edit et afficher */
+
 let displayIdeas = () => {
   //decommenter pour nettoyer le localstorage
-  // localStorage.setItem('content', JSON.stringify(dataJson));
+  //localStorage.setItem('content', JSON.stringify(dataJson));
   let listIdeas = localStorage.getItem('content') ? JSON.parse(localStorage.getItem('content')) : [];
-
   let toDisplay = "";
 
+  // je parcours le tableau
+  // ----debut for
   for (let i = 0; i<listIdeas.length; i++){
     let li = document.createElement ("li");
     li.innerText = listIdeas[i].idea;
 
-    let display = document.createElement ("button");
-    display.setAttribute("id", "display" + i);
-    display.setAttribute("class", "display");
-    display.innerText = "Display";
-    //display.addEventListener('click', () => {}
-
-    let addCommBtn = document.createElement ("button");
-    addCommBtn.setAttribute("id", "displayCom" + i);
-    addCommBtn.setAttribute("class", "modal-com-btn");
-    addCommBtn.innerText = "Add commentary";
-    //addCommBtn.addEventListener('click', () => {modal-comment}
-
-
-//edition of ideas
-//--------------------------------------------------------------
+    //creation du bouton edit
     let editBtn = document.createElement ("button");
     editBtn.setAttribute("class", "modal-edit-btn");
     editBtn.innerText = "Edit";
 
+    // function edit
     editBtn.addEventListener('click', () => {
-      console.log(document.getElementById("modal-title"));
       document.querySelector("#edit-title").value = listIdeas[i].idea;
       document.querySelector("#edit-descr").innerText = listIdeas[i].description;
       document.querySelector(".modal-com").innerText = listIdeas[i].commentary;
-      document.querySelector(".save-idea").addEventListener("click", () => {
+
+      // on sauvegarde dans la local nos changement
+      let saveBtn = document.querySelector(".save-idea");
+      saveBtn.addEventListener("click", () => {
         listIdeas[i].idea = document.querySelector("#edit-title").value;
         listIdeas[i].description = document.querySelector("#edit-descr").value;
         localStorage.setItem('content', JSON.stringify(listIdeas));
         window.location.reload();
-      });
+      });// end of save
+
       modalEdit.style.display = "block";
-    });
-//delete
-//--------------------------------------------------------------
+
+    }); // end of edit
+
+
+    // creation du bouton delete
     let deleteBtn = document.createElement ("button");
     deleteBtn.setAttribute("id", "delete" + i);
     deleteBtn.setAttribute("class", "modal-delete-btn");
     deleteBtn.innerText = "Delete";
 
+    // function delete
     deleteBtn.addEventListener('click', () => {
       listIdeas.splice(i, 1);
       localStorage.setItem('content', JSON.stringify(listIdeas));
       window.location.reload();
-    });
+    }); // end of delete
+
+
+  /*Pour chaque idée, on doit pouvoir donner un
+  commentaire qui lui est propre*/
+    // creation du bouton Display
+    let displayBtn = document.createElement ("button");
+    displayBtn.setAttribute("class", "modal-display-btn");
+    displayBtn.innerText = "Display";
+
+
+    // function Display
+    displayBtn.addEventListener('click', () => {
+
+      // fonction add commentaire
+      let input_textarea = document.querySelector('.modal-comment');
+      let pComments = document.querySelector('.modal-com');
+      let addCommentBtn = document.querySelector('.add-comment');
+      let listIdeas = localStorage.getItem('content') ? JSON.parse(localStorage.getItem('content')) : [];
+      input_textarea.value="";
+
+      console.log(JSON.parse(localStorage.getItem('content')));
+
+      //function addComment pour ajouter
+      addCommentBtn.addEventListener('click', () => {
+        listIdeas[i].commentary.push(input_textarea.value);
+        localStorage.setItem('content', JSON.stringify(listIdeas));
+
+      }); //end addComment.btn
+
+      // on affiche tous les commentaires d'une idée
+      input_textarea.value="";
+      let toDisplay = "";
+      for (let j=0; j<listIdeas[i].commentary.length; j++ ){
+        toDisplay += "<p>" + listIdeas[i].commentary[j] + "</p>";
+      }// end of for
+
+      //listIdeas[i].commentary = document.querySelector(".modal-comment").value;
+      pComments.innerHTML = toDisplay;
+      modalComment.style.display = "block";
+  }); //end displayBtn
+
+    // on affiche la liste avec le ul et li +  avec les boutons display, delete et edit
     let ul =document.querySelector('ul');
     ul.appendChild(li);
     ul.appendChild(deleteBtn);
     ul.appendChild(editBtn);
-  }
-// fonction qui ajoute un commentaire
-// passer en parametre le numero de l'idée
-//----------------------------------------
-
-  let input_textarea = document.querySelector('.modal-comment');
-  let output_div = document.querySelector('.modal-com');
-  let save_button = document.querySelector('.save-idea');
-
-  let listComments = listIdeas[1].commentary;
-  let comment ="";
-
-  let addComments = () => {
-
-    comment.push(input_textarea.value);
-
-    //localStorage.setItem('content', JSON.stringify(listIdeas));
-
-    input_textarea.value="";
-    let toDisplay = "";
-
-    for(let i=0; i<listComments.length; i++ ){
-
-      toDisplay += "<p>" + listComments[i] + "</p>";
-    }
-    output_div.innerHTML = toDisplay;
-
-  };
+    ul.appendChild(displayBtn);
 
 
 
-}
+  }; // end of for de la liste des idées
+};// en of displayIdeas-----------------
+
+
+/*Sur la page index, on doit pouvoir ajouter une nouvelle idée
+on a besoin de l'id de cette idée de sa value ainsi que sa description
+A chaque idée, on peut lui donner des commentaires*/
 
 //Fonction ajoute idée, desciption, id
 //---------------------------------------------------
 
-
-
 let newIdea = document.querySelector("#modal-title");
 let newDes = document.querySelector("#modal-descr");
 
-
 let addIdea = (i, d) =>{
+
   let listIdeas = localStorage.getItem('content') ? JSON.parse(localStorage.getItem('content')) : [];
 
   listIdeas.push({id: listIdeas.length ,idea: i.value,description: d.value,commentary: []});
   localStorage.setItem('content', JSON.stringify(listIdeas));
-}
 
-document.querySelector(".add-idea").addEventListener("click", () => {
+}// end of function addIdea
+
+// on ajoute une idée
+let addBtn =  document.querySelector(".add-idea");
+
+addBtn.addEventListener("click", () => {
   addIdea(newIdea, newDes);
 
-});
+});// end of add
 
 
+//--------------------------------------------------------------------------------------
 
-
+/*Pour chaque champs texte, on doit generer du markdown*/
 // -------------------------- Jeremy markdown convert to html--------------------------//
 
 // If you use require (Node etc), require as first the module and then create the instance
