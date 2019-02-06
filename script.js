@@ -160,7 +160,7 @@ let displayIdeas = () => {
       addCommentBtn.addEventListener('click', () => {
         listIdeas[i].commentary.push(input_textarea.value);
         localStorage.setItem('content', JSON.stringify(listIdeas));
-
+        window.location.reload();
       }); //end addComment.btn
 
       // on affiche tous les commentaires d'une idée
@@ -189,9 +189,9 @@ let displayIdeas = () => {
     // on affiche la liste avec le ul et li +  avec les boutons display, delete et edit
     let ul =document.querySelector('ul');
     ul.appendChild(li);
-    ul.appendChild(deleteBtn);
-    ul.appendChild(editBtn);
-    ul.appendChild(displayBtn);
+    li.appendChild(deleteBtn);
+    li.appendChild(editBtn);
+    li.appendChild(displayBtn);
 
 
 
