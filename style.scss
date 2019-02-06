@@ -102,12 +102,15 @@ img{
   height: 200px;
   margin:auto;
   display: block;
-  margin-top: -50px;
+  margin-top: 50px;
+  margin-bottom: 40px;
 }
 
 /*Modifie la couleur de fond du siteweb*/
-.body{
-  background-color: black;
+body{
+  background-image: url("/img/fond6.png");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 /*Modification couleur titre principal*/
@@ -115,6 +118,9 @@ img{
   background-color: #B22222;
 }
 
+article{
+  color:white;
+}
 
 /*Centre le bouton de clic pour afficher la modale*/
 .container{
@@ -156,13 +162,39 @@ button{
   border:2px solid black;
   width:20%;
   height:120px;
+  position: relative;
+  font-size: 20px;
+  text-align: center;
 }
 
+/*Modifie la taille des boutons sur la page principale*/
+.modal-delete-btn, .modal-edit-btn, .modal-display-btn{
+  width:60px;
+  height:40px;
+  display: inline-block;
+}
 
-
-.content {
-  background-image: url("/img/imageTest2.jpg");
+/*Modifie les backgrounds sur les boutons du JS*/
+.modal-delete-btn {
+  background-image: url("/img/icon_delete_white.png");
+  background-size: contain;
   background-repeat: no-repeat;
-  border-image: linear-gradient(top, rgb(189,183,107) 0%, transparent 50%) 10 10 stretch stretch;
-
+  background-position: center;
+  background-color: #010101;
 }
+.modal-edit-btn {
+  background-image: url("/img/icon_edit_white.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.modal-display-btn {
+  background-image: url("/img/icon_zoom_white.png");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/*.content {
+  background-color:#B22222;
+  box-shadow: .25rem .25rem 2.5rem;
+}*/

@@ -11,15 +11,10 @@ import "./style.scss";
 /* With buttons in html to open the right one for test purpos */
 // Get the Add modal
 var modal = document.getElementById('modal-add');
-<<<<<<< HEAD
-// Get the button that opens the modal
-var btn = document.getElementById("modal-add-btn");
-=======
 var modalEdit = document.getElementById('modal-edit');
 // Get the button that opens the modal
 var btn = document.getElementById("modal-add-btn");
 var edit = document.querySelector('modal-edit-btn');
->>>>>>> master
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("modal-add-close")[0];
 
@@ -39,84 +34,6 @@ window.onclick = function(event) {
   if (event.target == modal) {
     modal.style.display = "none";
   }
-<<<<<<< HEAD
-
-}
-// Get the Edit modal
-var modal2 = document.getElementById('modal-edit');
-// Get the button that opens the modal
-var btn2 = document.getElementById("modal-edit-btn");
-// Get the <span> element that closes the modal
-var span2 = document.getElementsByClassName("modal-edit-close")[0];
-
-// When the user clicks the button, open the modal
-btn2.onclick = function() {
-  modal2.style.display = "block";
-}
-
-// When the user clicks on <span> (x), close the modal
-span2.onclick = function() {
-  modal2.style.display = "none";
-
-}
-// Get the Edit modal
-var modal2 = document.getElementById('modal-edit');
-// Get the button that opens the modal
-var btn2 = document.getElementById("modal-edit-btn");
-// Get the <span> element that closes the modal
-var span2 = document.getElementsByClassName("modal-edit-close")[0];
-
-
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal2) {
-    modal2.style.display = "none";
-  }
-}
-//---------------------------------------------------------
-let dataJson = [
-{
-  "id": "0",
-  "idea": "Test: Idea 1",
-  "description": "Idea 1 description",
-  "commentary": []
-},
-{
-  "id": "1",
-  "idea": "Test: Idea 2",
-  "description": "Idea 2 description",
-  "commentary": []
-},
-{
-  "id": "2",
-  "idea": "Test: Idea 3",
-  "description": "Idea 3 description",
-  "commentary": []
-}
-];
-
-// Au chargement de page j'affiche la liste
-window.addEventListener("load", ()=>{
-
-  displayIdeas();
-});
-
-////////////////////////Magali/////////////////////////////
-// fonction qui liste la liste des idées
-//-----------------------------------------
-let displayIdeas = () => {
-  //decommenter pour nettoyer le localstorage
-  //localStorage.setItem('content', JSON.stringify(dataJson));
-  let listIdeas = localStorage.getItem('content') ? JSON.parse(localStorage.getItem('content')) : [];
-  let toDisplay = [];
-  console.log(listIdeas);
-  for (let i = 0; i<listIdeas.length; i++){
-    toDisplay += "<li>id="+listIdeas[i].id+" "+listIdeas[i].idea+"</li>";
-  }
-
-  document.querySelector('ul').innerHTML += toDisplay;
-=======
 
 
 }
@@ -208,11 +125,10 @@ let displayIdeas = () => {
     });
     let ul =document.querySelector('ul');
     ul.appendChild(li);
-    ul.appendChild(deleteBtn);
-    ul.appendChild(editBtn);
+    li.appendChild(deleteBtn);
+    li.appendChild(editBtn);
   }
 
->>>>>>> master
 }
 
 //Fonction ajoute idée, desciption, id
@@ -266,13 +182,6 @@ let addComments = () => {
   //addComments();
 //};
 
-<<<<<<< HEAD
-// fonction qui delete une idée
-//-------------------------------------------------
-
-//fonction qui edit une idée
-//--------------------------------------------------
-=======
 
 
 //fonction qui edit une idée
@@ -291,4 +200,3 @@ document.querySelector(".add-idea").addEventListener("click", () => {
   // document.getElementById("idea-descr").innerHTML = md.render(text);
   console.log(md.render(text));
 })
->>>>>>> master
