@@ -155,12 +155,12 @@ let displayIdeas = () => {
       input_textarea.value="";
 
       console.log(JSON.parse(localStorage.getItem('content')));
-      window.location.reload();
+
       //function addComment pour ajouter
       addCommentBtn.addEventListener('click', () => {
         listIdeas[i].commentary.push(input_textarea.value);
         localStorage.setItem('content', JSON.stringify(listIdeas));
-
+        window.location.reload();
       }); //end addComment.btn
 
       // on affiche tous les commentaires d'une idée
