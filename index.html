@@ -36,7 +36,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <h1>Add an idea</h1>
-            <span id="close" class="modal-close">&times;</span>
+            <span class="close">&times;</span>
           </div>
           <input id="modal-title" value="Title"></input>
           <textarea id="modal-descr" cols="30" rows="10"></textarea>
@@ -48,9 +48,9 @@
         <div class="modal-content">
           <div class="modal-header">
             <h1>Edit an idea</h1>
-            <span id="close-edit" class="modal-close">&times;</span>
+            <span class="close">&times;</span>
           </div>
-          <p class="idea-title">Idea Title:</p>
+          <h1 class="idea-title">Title:</h1>
           <input id="edit-title" value="content of title"></input>
           <p class="idea-descr">Idea Description:</p>
           <textarea id="edit-descr" cols="30" rows="10"></textarea>
@@ -62,10 +62,10 @@
         <div class="modal-content">
           <div class="modal-header">
             <h1>Comment an idea</h1>
-            <span id="close-comments" class="modal-close">&times;</span>
+            <span class="close">&times;</span>
           </div>
-          <h1 class="idea-title">Idea Title</h1>
-          <p class="idea-descr">Idea Description</p>
+          <h1 class="idea-title" id="show-title">Idea Title</h1>
+          <p class="idea-descr" id="show-descr">Idea Description</p>
           <h2>Comments:</h2>
           <p class="modal-com">List of comments</p>
           <h2>Add a comment:</h2>

@@ -13,55 +13,37 @@ import "./style.scss";
 var modal = document.getElementById('modal-add');
 var modalEdit = document.getElementById('modal-edit');
 var modalComment = document.getElementById('modal-comment');
+
 // Get the button that opens the modal
-var btn = document.querySelector("#modal-add-btn");
+var btn = document.getElementById("modal-add-btn");
 var edit = document.querySelector('.modal-edit-btn');
 var display = document.querySelector('.modal-display-btn');
+
+
 // Get the <span> element that closes the modal
-var span = document.getElementsByClassName("modal-close")[0];
+var span = document.getElementsByClassName("close")[0];
+var span1 = document.getElementsByClassName("close")[1];
+var span2 = document.getElementsByClassName("close")[2];
 
-
-
-// When the user clicks the button X, close the modal
-span.onclick = function() {
-  modal.style.display = "none";
-  modalEdit.style.display = "none";
-  modalComment.style.display = "none";
-}
 
 // When the user clicks the button, open the modal
 btn.onclick = function() {
   modal.style.display = "block";
 }
 
-edit.onclick = function() {
-  modalEdit.style.display = "block";
-}
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
 
-display.onclick = function() {
-  modalComment.style.display = "block";
 }
+span1.onclick = function() {
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
+  modalEdit.style.display = "none";
 }
-window.onclick = function(event) {
-  if (event.target == modalEdit) {
-    modalEdit.style.display = "none";
-  }
+span2.onclick = function() {
+
+  modalComment.style.display = "none";
 }
-window.onclick = function(event) {
-  if (event.target == modalComment) {
-    modalComment.style.display = "none";
-  }
-}
-
-
-
-// When the user clicks anywhere outside of the modal, close it
 
 
 //-----------------------fin des fct de la modal box----------------------------------
@@ -122,8 +104,10 @@ let displayIdeas = () => {
     // function edit
     editBtn.addEventListener('click', () => {
       document.querySelector("#edit-title").value = listIdeas[i].idea;
-      document.querySelector("#edit-descr").innerText = listIdeas[i].description;
+      document.querySelector("#edit-descr").value = listIdeas[i].description;
       document.querySelector(".modal-com").innerText = listIdeas[i].commentary;
+
+
 
       // on sauvegarde dans la local nos changement
       let saveBtn = document.querySelector(".save-idea");
@@ -137,7 +121,6 @@ let displayIdeas = () => {
       modalEdit.style.display = "block";
 
     }); // end of edit
-
 
     // creation du bouton delete
     let deleteBtn = document.createElement ("button");
@@ -183,6 +166,7 @@ let displayIdeas = () => {
       // on affiche tous les commentaires d'une idée
       input_textarea.value="";
       let toDisplay = "";
+
       for (let j=0; j<listIdeas[i].commentary.length; j++ ){
         toDisplay += "<p>" + listIdeas[i].commentary[j] + "</p>";
       }// end of for
@@ -190,6 +174,16 @@ let displayIdeas = () => {
       //listIdeas[i].commentary = document.querySelector(".modal-comment").value;
       pComments.innerHTML = toDisplay;
       modalComment.style.display = "block";
+      document.getElementById("show-title").innerHTML = listIdeas[i].idea;
+      // If you use require (Node etc), require as first the module and then create the instance
+      let Remarkable = require('remarkable');
+      // If you're in the browser, the Remarkable class is already available in the window
+      let md = new Remarkable();
+      let md_descr = listIdeas[i].description;
+      document.getElementById("show-descr").innerHTML = md.render(md_descr);
+
+
+
   }); //end displayBtn
 
     // on affiche la liste avec le ul et li +  avec les boutons display, delete et edit
@@ -237,14 +231,3 @@ addBtn.addEventListener("click", () => {
 
 /*Pour chaque champs texte, on doit generer du markdown*/
 // -------------------------- Jeremy markdown convert to html--------------------------//
-
-// If you use require (Node etc), require as first the module and then create the instance
-let Remarkable = require('remarkable');
-// If you're in the browser, the Remarkable class is already available in the window
-let md = new Remarkable();
-
-document.querySelector(".add-idea").addEventListener("click", () => {
-  let text = (document.getElementById("modal-descr").value);
-  // document.getElementById("idea-descr").innerHTML = md.render(text);
-  console.log(md.render(text));
-})
